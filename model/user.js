@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
   tokenExpiration: Date
 })
 
-function validateUserForm(User) {
+function validateUserForm(user) {
     const schema = Joi.object({
         name: Joi.string().min(2).max(30).required(),
         email: Joi.string().min(5).max(200).required().email(),
