@@ -1,4 +1,4 @@
-# Welcome to my first Nodejs project!
+# Welcome to our Node.js project!
 
 This is a school assignment that consist of a webshop built with Express, Mongo and EJS.
 
