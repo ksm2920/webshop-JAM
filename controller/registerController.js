@@ -28,4 +28,7 @@ const registerSubmit = async (req,res) => {
     res.redirect('/login')
 }
 
-module.exports = {registerRender, registerSubmit};
+module.exports = {
+    registerRender, 
+    registerSubmit
+};

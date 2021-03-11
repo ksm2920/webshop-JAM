@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const Joi = require("joi");
+const mongoose = require('mongoose');
+const Joi = require('joi');
 
 const userSchema = new mongoose.Schema({
   name: { type:String, required: true, unique: true },
@@ -19,7 +19,7 @@ function validateUserForm(user) {
     return schema.validate(user);
 }
 
-const User = mongoose.model("user", userSchema);
+const User = mongoose.model('user', userSchema);
 
 module.exports = {
     User,
