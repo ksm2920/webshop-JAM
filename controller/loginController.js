@@ -1,5 +1,8 @@
 const {User, validateLoginForm} = require('../model/user');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
+require('dotenv').config();
 
 const loginRender = (req, res) => {
     res.render('login.ejs', {error:""})
@@ -7,29 +10,39 @@ const loginRender = (req, res) => {
 
 const loginSubmit = async (req, res) => {
     const {error} = validateLoginForm(req.body);
-
+    
     if(error) {
         return res.render('login.ejs',{error: error.details[0].message})  
     }
-
-    const {email, password} = req.body;
-
-    const user = await User.findOne({email:email});
     
-    if(!user) {
-        return res.render('register.ejs', {error:"You don't have an account. Please sign up"});
+    const {email, password} = req.body;
+    
+    try {
+        const user = await User.findOne({email:email});
+        
+        if(!user) {
+            return res.render('register.ejs', {error:"You don't have an account. Please sign up"});
+        }
+        
+        const validUser = await bcrypt.compare(password, user.password);
+        
+        if(!validUser) {
+            return res.render('login.ejs', {error: "Wrong password"})
+        }
+        
+        const jwtToken = await jwt.sign({user:user}, process.env.SECRET_KEY);
+
+        if(jwtToken) {
+            res.cookie("jwtToken", jwtToken, {maxAge: 3600000, httpOnly: true});
+            //redirect to shopping cart
+            return res.redirect('/')
+        }
+        
+        //redirect to shopping cart
+        return res.redirect('/');
+    }catch {
+        return res.render('login.ejs', {error:"System error" + err})
     }
-
-    const validUser = await bcrypt.compare(password, user.password);
-
-    if(!validUser) {
-        return res.render('login.ejs', {error: "Wrong password"})
-    }
-
-    console.log(validUser);
-
-    //redirect to shopping cart
-    res.redirect('/');
 }
 
 module.exports = {
