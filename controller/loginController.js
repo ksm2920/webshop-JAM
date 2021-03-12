@@ -35,12 +35,19 @@ const loginSubmit = async (req, res) => {
         if(jwtToken) {
             res.cookie("jwtToken", jwtToken, {maxAge: 3600000, httpOnly: true});
             //redirect to shopping cart
-            return res.redirect('/')
+            var jwtObjevt = jwt.verify(jwtToken, process.env.SECRET_KEY)
+            console.log(jwtObjevt)
+
+            if(jwtObjevt.user.role) {
+                return res.redirect('/addProduct');
+            } else {
+                return res.send('Welcome. (redirect to shopping cart)');
+            }
         }
         
         //redirect to shopping cart
-        return res.redirect('/');
-    }catch {
+        return res.send('Error, how did u get here');
+    }catch (err) {
         return res.render('login.ejs', {error:"System error" + err})
     }
 }
