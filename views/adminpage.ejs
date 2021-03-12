@@ -1,0 +1,11 @@
+<a href="/addProduct">Add products</a>
+
+<% products.map (product => { %>
+<div>
+<img src="/uploads/<%= product.pathOfImage %>" alt="can not find an image" height="150px">
+<span><%= product.name %> </span>
+<span><%= product.description %> </span>
+<span><%= product.price %> </span>
+</div>
+
+<% }) %>

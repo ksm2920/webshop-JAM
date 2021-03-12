@@ -39,7 +39,7 @@ const loginSubmit = async (req, res) => {
             console.log(jwtObjevt)
 
             if(jwtObjevt.user.role) {
-                return res.redirect('/addProduct');
+                return res.redirect('/adminPage');
             } else {
                 return res.send('Welcome. (redirect to shopping cart)');
             }

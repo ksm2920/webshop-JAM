@@ -29,13 +29,20 @@ const addProductFormSubmit = async (req, res) => {
 
 }
 
-const showAdminProductList = async (req, res) => {
-    const user = await User.find({_id:req.user.user._id}).populate('productList');
-    res.render('adminPage.ejs', {product: user.productList, error:""})
+const adminProductListRender = async (req, res) => {
+    const users = await User.find({_id:req.user.user._id}).populate('productList');
+
+    console.log(users);
+
+    console.log(users[0].productList);
+
+    const products = users[0].productList;
+
+    res.render('adminPage.ejs', {products: products, error:""})
 }
 
 module.exports = {
     addProductForm,
     addProductFormSubmit,
-    showAdminProductList
+    adminProductListRender
 }
