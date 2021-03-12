@@ -2,6 +2,7 @@ const {User, validateRegisterForm} = require('../model/user');
 const bcrypt = require('bcrypt');
 
 const registerRender = (req, res) => {
+    res.clearCookie('jwtToken');
     res.render('register.ejs', {error:""});
 }
 
