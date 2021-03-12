@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 
 const userRouter = require('./routes/userRoute');
+const adminRouter = require('./routes/adminRoute');
 
 const nodeSass = require('node-sass-middleware');
 require('dotenv').config();
@@ -23,6 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use('/', userRouter);
+app.use('/', adminRouter);
 
 const option = {
     useNewUrlParser: true,
