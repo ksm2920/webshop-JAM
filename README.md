@@ -1,4 +1,4 @@
-# Welcome to my first Nodejs project!
+# Welcome to our Node.js project!
 
 This is a school assignment that consist of a webshop built with Express, Mongo and EJS.
 
@@ -17,7 +17,7 @@ This is a school assignment that consist of a webshop built with Express, Mongo 
 
 ## Npm Packages
 
-express, mongoose, ejs, body-parser, dotenv, node-sass-middleware, nodemon
+express, mongoose, ejs, bcrypt , body-parser, cookie-parser, crypto , dotenv, joi, jsonwebtoken, multer, node-sass-middleware, nodemailer, nodemon
 
 `npm install`
 
