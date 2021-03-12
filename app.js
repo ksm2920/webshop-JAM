@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 
 const userRouter = require('./routes/userRoute');
+const adminRouter = require('./routes/adminRoute');
 
 const nodeSass = require('node-sass-middleware');
 require('dotenv').config();
@@ -17,24 +18,24 @@ app.use(nodeSass({
     outputStyle: 'compressed'
 }), express.static(__dirname + "/public"))
 
-app.use(bodyParser.urlencoded({ extended: false }));
-
 app.set('view engine', 'ejs');
-
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use('/', userRouter);
+app.use('/', adminRouter);
 
 const option = {
     useNewUrlParser: true,
-    useUnifiedTopology: true 
+    useUnifiedTopology: true,
+    useCreateIndex: true 
 }
 
 mongoose.connect(
     process.env.DB_CONNECTION,
     option,
     (err) => {
-        console.log(err);
         
         if(err) {
             console.log("Error" + err);
