@@ -2,12 +2,24 @@ const mongoose = require('mongoose');
 const Joi = require('joi');
 
 const userSchema = new mongoose.Schema({
-  name: { type:String, required: true},
-  email: { type:String, required: true, unique: true },
-  password: { type: String, required: true},
-  role: String,
-  token: String,
-  tokenExpiration: Date
+    name: { type:String, required: true},
+    email: { type:String, required: true, unique: true },
+    password: { type: String, required: true},
+    role: String,
+    token: String,
+    tokenExpiration: Date,
+    productList: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "product"
+        }
+    ],
+    shoppingCart: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "prodcut"
+        }
+    ]
 })
 
 function validateRegisterForm(user) {
@@ -27,11 +39,20 @@ function validateLoginForm(user) {
     return schema.validate(user);
 }
 
+userSchema.methods.addProductList = function(productId) {
+    this.productList.push(productId);
+    this.save();
+}
+
+userSchema.methods.addToCart = function(productId) {
+    this.shoppingCart.push(productId);
+    this.save();
+}
+
 const User = mongoose.model('user', userSchema);
 
 module.exports = {
     User,
     validateRegisterForm,
-    validateLoginForm
-
+    validateLoginForm  
 };
