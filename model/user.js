@@ -44,10 +44,16 @@ userSchema.methods.addProductList = function(productId) {
     this.save();
 }
 
+userSchema.methods.removeProdcut = function(productId) {
+    this.productList.filter( product => product._id != productId)
+}
+
 userSchema.methods.addToCart = function(productId) {
     this.shoppingCart.push(productId);
     this.save();
 }
+
+
 
 const User = mongoose.model('user', userSchema);
 
