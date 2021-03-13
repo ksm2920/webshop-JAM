@@ -30,6 +30,7 @@ const addProductFormSubmit = async (req, res) => {
 }
 
 const adminProductListRender = async (req, res) => {
+    const editId = req.query.editId
     const users = await User.find({_id:req.user.user._id}).populate('productList');
 
     console.log(users);
@@ -38,11 +39,38 @@ const adminProductListRender = async (req, res) => {
 
     const products = users[0].productList;
 
-    res.render('adminPage.ejs', {products: products, error:""})
+    res.render('adminPage.ejs', 
+    {   products, 
+        editId,
+        error:""
+    })
+}
+
+const editProductFormSubmit = async (req, res) => {
+    const id = req.params.id;
+    const {name, description, price} = req.body;
+
+    console.log(req.body);
+    console.log(id);
+    await Product.findByIdAndUpdate(id, {name: name, description: description, price: price}, () => {
+        res.redirect("/adminPage");
+    })
+}
+
+const removeProductFromList = async (req, res) => {
+    const id = req.params.id;
+    const user = await User.findOne({_id:req.user.user._id});
+    user.removeProdcut(id);
+
+    await Product.findByIdAndRemove(id, {name: req.body.name}, () => {
+        res.redirect("/adminPage");
+    })
 }
 
 module.exports = {
     addProductForm,
     addProductFormSubmit,
-    adminProductListRender
+    adminProductListRender,
+    editProductFormSubmit,
+    removeProductFromList
 }
