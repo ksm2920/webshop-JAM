@@ -1,8 +1,9 @@
 @import 'responsive';
+@import 'user';
    
 
 body{
-    color: rgba(49, 6, 6, 0.897);
+    color: rgb(70, 37, 24);
     //color: rgb(240, 113, 40);
     //font-weight: 600;
     background-color:white;
@@ -14,10 +15,14 @@ body{
 }
 #menu {
     
-    background-color: rgb(43, 9, 9);
+    background-color: rgb(70, 37, 24);
     color: white;
-    
-    
+}
+
+#menu-list {
+    @include desktop {
+        margin-left: 100px;
+    }
 }
 .navIcon{
     color: white;
@@ -32,8 +37,16 @@ body{
     align-items: center;
     justify-content: center;
     background-color:transparent;
-    padding: 80px;
+    @include desktop{
+        margin-top: 50px;
+    }
     
+}
+video {
+    @include desktop {
+        width: 70%;
+    }
+   
 }
 .card-title{
     height: 30px;
@@ -66,9 +79,9 @@ body{
 
 
 #footercontent{
-    height: 100px;
-    background-color:beige;
-    color:rgb(43, 9, 9);
+    height: 200px;
+    background-color:rgb(231, 213, 190);
+    color:rgb(70, 37, 24);
     text-align: center;
     font-weight: 800;
     font-size: 20px;
@@ -102,9 +115,9 @@ body{
     
 }
 .loadMore{
-    border: 2px solid rgb(43, 9, 9);
-    color: rgb(68, 3, 3) ;
-    box-shadow: 0 20px 20px rgba(240, 113, 40, 0.2), 0px 0px 50px rgba(240, 113, 40, 0.2);
+    border: none;
+    color:rgb(70, 37, 24) ;
+    // box-shadow: 0 20px 20px rgba(240, 113, 40, 0.2), 0px 0px 50px rgba(240, 113, 40, 0.2);
     font-size: 28px;
     &:hover{
         background-color: rgb(43, 9, 9);
@@ -145,10 +158,12 @@ body{
 .buybtn{
   height: 40px;
   width: 150px;
-  background-color: rgb(43, 9, 9);
+  background-color: rgb(70, 37, 24);
+  border:none;
+  border-radius: 4px;
   color:white ;
-  font-weight: 800;
-  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
+//   font-weight: 800;
+//   box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
   z-index: 2;
  
 }
@@ -159,9 +174,18 @@ body{
 .PrdtPg{
     background-color:white;
 }
-.pdtList{
+.about{
     align-items: center;
-    
-    padding-left: 50px;
-    padding-top: 20px;
+    text-align: center;
+    margin: 20px 10px;
+    font-size: 12px;
+    @include desktop {
+        
+    }
+}
+
+.PrdList {
+    margin-top: 50px;
+    align-items: center;
+    text-align: center;
 }
