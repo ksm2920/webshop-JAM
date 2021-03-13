@@ -8,9 +8,10 @@
     <section class="productList PrdtPg">
         <div class="container containerProduct">
             <div class="card col-12 col-md-6 col-lg-6 minicard" style="width: 18rem;">
-                <h3 class="card-title"> I am <%= product.name %></h3>
+                
                 <img src="/uploads/<%= product.pathOfImage %>" class="card-img-top" alt="">
                 <div class="card-body">
+                    <h3 class="card-title"> <%= product.name %></h3>
                     <p class="card-text"> <%= product.description %></p>
                     <p class="card-text"> <%= product.price %> SEK</p>
                     <span class="buyBtn">

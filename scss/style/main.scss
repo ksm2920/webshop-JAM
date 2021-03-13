@@ -2,25 +2,25 @@
    
 
 body{
-    color: rgb(68, 3, 3);
+    color: rgba(49, 6, 6, 0.897);
     //color: rgb(240, 113, 40);
-    font-weight: 600;
-    //background-color:rgb(206, 201, 204);
-    font-family: 'Dancing Script', cursive;
-    font-size: 25px;
-    background-image: linear-gradient(#a8ff78, #78ffd6)
+    //font-weight: 600;
+    background-color:white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    //background-image: linear-gradient(#a8ff78, #78ffd6)
     
     
 }
 #menu {
     
-    background-color: rgb(68, 3, 3);
-    color: rgb(240, 113, 40);
-    font-weight: 800;
+    background-color: rgb(43, 9, 9);
+    color: white;
+    
     
 }
 .navIcon{
-    color: rgb(240, 113, 40);
+    color: white;
 }
 
 
@@ -39,15 +39,15 @@ body{
     height: 30px;
     width: 195px;
     margin: 30px;
-    background-color: rgb(68, 3, 3);
-    color:rgb(240, 113, 40);
-    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
-    z-index: 2;
+    //background-color: rgb(43, 9, 9);
+    color:rgb(43, 9, 9);
+    //box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
+    //z-index: 2;
     
 }
 .myImg{
     
-    height: 280px;
+    //height: 280px;
     width: 195px;
     z-index: 2;
     transition: all 0.75s ease-out;
@@ -60,15 +60,15 @@ body{
     transform-style: preserve-3d;
     transition: all 0.75s ease-out;
     justify-content: space-around;
-    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2)
+    //box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2)
 
 }
 
 
 #footercontent{
     height: 100px;
-    background-color:rgb(68, 3, 3) ;
-    color:rgb(240, 113, 40);
+    background-color:beige;
+    color:rgb(43, 9, 9);
     text-align: center;
     font-weight: 800;
     font-size: 20px;
@@ -102,21 +102,21 @@ body{
     
 }
 .loadMore{
-    border: 2px solid rgb(68, 3, 3);
+    border: 2px solid rgb(43, 9, 9);
     color: rgb(68, 3, 3) ;
     box-shadow: 0 20px 20px rgba(240, 113, 40, 0.2), 0px 0px 50px rgba(240, 113, 40, 0.2);
     font-size: 28px;
     &:hover{
-        background-color: rgb(68, 3, 3);
-        color:rgb(240, 113, 40) ;
+        background-color: rgb(43, 9, 9);
+        color:white ;
         z-index: 2;
     }
 }
 .menuColor{
-    color:rgb(240, 113, 40);
+    color:white;
 }
 .myCartBtn{
-    color:rgb(240, 113, 40);
+    color:white;;
     height: 50px;
     width: 60px;
     z-index: 100;
@@ -133,9 +133,9 @@ body{
     height: 50px;
     width: 50px;
     border-radius: 50%;
-    color:rgb(240, 113, 40);
+    color:white;
     &:hover{
-        background-color: rgb(240, 113, 40);
+        background-color: white;
         color:rgb(68, 3, 3) ;
         box-shadow: 0 20px 20px rgba(240, 113, 40, 0.2), 0px 0px 50px rgba(240, 113, 40, 0.2);
     }
@@ -145,8 +145,8 @@ body{
 .buybtn{
   height: 40px;
   width: 150px;
-  background-color: rgb(68, 3, 3);
-  color:rgb(240, 113, 40) ;
+  background-color: rgb(43, 9, 9);
+  color:white ;
   font-weight: 800;
   box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
   z-index: 2;
@@ -157,11 +157,11 @@ body{
     padding-left: 25%;
 }
 .PrdtPg{
-    background-color:rgb(206, 201, 204);
+    background-color:white;
 }
 .pdtList{
     align-items: center;
-    font-size: 100px;
+    
     padding-left: 50px;
     padding-top: 20px;
 }
