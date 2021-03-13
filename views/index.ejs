@@ -1,11 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('head.ejs') %>
-<body>
-    <h1>It works!</h1>
-    <form action="/" method="post">
-        <input type="text" name="name" id="">
-        <button type="submit">Send</button>
-    </form>
+
+<body onload="ScrollToBottom(<%= pageIndex %>);">
+  <%- include('header.ejs') %>
+        <main>
+          <section class="highlighter">
+            <video id="vid" width="50%" controls autoplay muted loop>
+              <source src="/pictures/videos/promo.mp4" type="video/mp4">
+              
+              Your browser does not support the video tag.
+            </video>
+          </section >
+          
+          <section class="productList">
+            
+            <div class="container">
+              <h1 class= "pdtList">Now Let's Jam....!!</h1>
+              <div class="row">
+                <% products.forEach(product => { %>
+                <div class="card col-12 col-md-6 col-lg-6 minicard" style="width: 18rem;">
+                  <h4 class="card-title">Hey, I am <%= product.name %></h4>
+                  <a class="imagebox" href="/products/<%= product.id %>"><img src="/uploads/<%= product.pathOfImage %>" class="card-img-top myImg" alt=""></a>
+                  <div class="card-body">
+                    <a class="imagebox" href="/products/<%= product.id %>">Clicl me to know more</a>
+                    <p class="card-text"> <%= product.price %> SEK</p>
+                    <span class="buyBtn">
+                      
+                      <input type="submit" value="Take me home " class="buybtn">
+                    </span>
+                  </div>
+                </div>
+                <% }); %>
+          </div> 
+        </div>
+        <% if(pageIndex * pageSize < totalProductCount) { %>
+          <% pageIndex += 1 %>
+        <div id="bottom"  style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
+            <a class="loadMore"  href="<%= `/?pageIndex=${pageIndex}` %>">Load More...</a>
+        </div>
+      <% } %>
+       </section>
+    
+      </main>
+      <footer id="footercontent">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="email"> email:Hello@jam.com </p>
+    
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-twitter-square"></i>
+                <i class="fab fa-instagram-square"></i>
+              </div>
+            </div>
+          </div>
+        </footer>
+        <script src="/javascripts/index.js"></script>
+      </body>
+    </html>
 </body>
+
 </html>
