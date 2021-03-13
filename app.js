@@ -5,6 +5,8 @@ const cookieParser = require('cookie-parser');
 
 const userRouter = require('./routes/userRoute');
 const adminRouter = require('./routes/adminRoute');
+const indexRouter = require('./routes/indexRoute');
+const productRouter = require('./routes/productRoute');
 
 const nodeSass = require('node-sass-middleware');
 require('dotenv').config();
@@ -23,8 +25,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+app.use('/', indexRouter);
 app.use('/', userRouter);
 app.use('/', adminRouter);
+app.use('/', productRouter);
 
 const option = {
     useNewUrlParser: true,

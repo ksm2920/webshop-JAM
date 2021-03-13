@@ -1,7 +1,167 @@
 @import 'responsive';
-h1 {
-    color: red;
-    @include desktop {
-            color: black;
-        }
+   
+
+body{
+    color: rgba(49, 6, 6, 0.897);
+    //color: rgb(240, 113, 40);
+    //font-weight: 600;
+    background-color:white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    //background-image: linear-gradient(#a8ff78, #78ffd6)
+    
+    
+}
+#menu {
+    
+    background-color: rgb(43, 9, 9);
+    color: white;
+    
+    
+}
+.navIcon{
+    color: white;
+}
+
+
+.highlighter {
+    
+    height: auto;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:transparent;
+    padding: 80px;
+    
+}
+.card-title{
+    height: 30px;
+    width: 195px;
+    margin: 30px;
+    //background-color: rgb(43, 9, 9);
+    color:rgb(43, 9, 9);
+    //box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
+    //z-index: 2;
+    
+}
+.myImg{
+    
+    //height: 280px;
+    width: 195px;
+    z-index: 2;
+    transition: all 0.75s ease-out;
+    -webkit-filter: drop-shadow(5px 5px 5px rgb(59, 59, 59));
+    filter:         drop-shadow(5px 5px 5px rgb(59, 59, 59));
+    
+}
+.imagebox{
+    
+    transform-style: preserve-3d;
+    transition: all 0.75s ease-out;
+    justify-content: space-around;
+    //box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2)
+
+}
+
+
+#footercontent{
+    height: 100px;
+    background-color:beige;
+    color:rgb(43, 9, 9);
+    text-align: center;
+    font-weight: 800;
+    font-size: 20px;
+    padding: 8px;
+}
+.productList{
+    //background-color:rgb(206, 201, 204);
+    background-color:transparent;
+    //background-image: linear-gradient(#a8ff78, #78ffd6)
+    border-color:none;
+    
+    
+
+}
+
+.minicard{
+    border:none;
+    background-color:transparent;
+    margin-top: 15vh;
+    margin-bottom: 5vh;
+    align-items: center;
+    text-align: center;
+    //background-color:rgb(31, 28, 29);
+    
+    
+    
+}
+#showBtn{
+    text-align: center;
+    margin-bottom: 10px;
+    
+}
+.loadMore{
+    border: 2px solid rgb(43, 9, 9);
+    color: rgb(68, 3, 3) ;
+    box-shadow: 0 20px 20px rgba(240, 113, 40, 0.2), 0px 0px 50px rgba(240, 113, 40, 0.2);
+    font-size: 28px;
+    &:hover{
+        background-color: rgb(43, 9, 9);
+        color:white ;
+        z-index: 2;
+    }
+}
+.menuColor{
+    color:white;
+}
+.myCartBtn{
+    color:white;;
+    height: 50px;
+    width: 60px;
+    z-index: 100;
+    margin-right: 50px;
+    margin-bottom: 20px;
+    
+    
+    
+}
+.myCart{
+    padding: 20px;
+    padding-right: 30px;
+    padding-bottom: 30px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    color:white;
+    &:hover{
+        background-color: white;
+        color:rgb(68, 3, 3) ;
+        box-shadow: 0 20px 20px rgba(240, 113, 40, 0.2), 0px 0px 50px rgba(240, 113, 40, 0.2);
+    }
+
+}
+
+.buybtn{
+  height: 40px;
+  width: 150px;
+  background-color: rgb(43, 9, 9);
+  color:white ;
+  font-weight: 800;
+  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+ 
+}
+
+.containerProduct{
+    padding-left: 25%;
+}
+.PrdtPg{
+    background-color:white;
+}
+.pdtList{
+    align-items: center;
+    
+    padding-left: 50px;
+    padding-top: 20px;
 }
