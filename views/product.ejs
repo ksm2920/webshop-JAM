@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('head.ejs') %>
+
+<body>
+    <%- include('header.ejs') %>
+    
+    <section class="productList PrdtPg">
+        <div class="container containerProduct">
+            <div class="card col-12 col-md-6 col-lg-6 minicard" style="width: 18rem;">
+                <h3 class="card-title"> I am <%= product.name %></h3>
+                <img src="/uploads/<%= product.pathOfImage %>" class="card-img-top" alt="">
+                <div class="card-body">
+                    <p class="card-text"> <%= product.description %></p>
+                    <p class="card-text"> <%= product.price %> SEK</p>
+                    <span class="buyBtn">
+                
+                        <input type="submit" value="Take me home" class="buybtn">
+                    </span>
+                </div>
+            </div>
+        </div>
+</section >
+    <footer id="footercontent">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="email"> email:Hello@jam.com </p>
+    
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-twitter-square"></i>
+                <i class="fab fa-instagram-square"></i>
+              </div>
+            </div>
+          </div>
+        </footer>
+</body>
+</html>
