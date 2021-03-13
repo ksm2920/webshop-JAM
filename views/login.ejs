@@ -1,6 +1,12 @@
-<form action="/login" method="post">
-    <input type="email" name="email" id="" placeholder="email">
-    <input type="password" name="password" id="" placeholder="password">
-    <button type="submit">Login</button>
-    <%= error %>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<%- include('head.ejs') %>
+<body>
+    <form action="/login" method="post">
+        <input type="email" name="email" id="" placeholder="email">
+        <input type="password" name="password" id="" placeholder="password">
+        <button type="submit">Login</button>
+        <%= error %>
+    </form>
+</body>
+</html>

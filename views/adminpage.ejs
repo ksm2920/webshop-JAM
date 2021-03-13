@@ -1,27 +1,34 @@
-<a href="/addProduct">Add products</a>
-<ul>
-<% products.forEach (product => { %>
-    <% if (product._id == editId) { %>
-    <li>
-        <form action="/edit/<%= product._id %>" method="post">
-            <img src="/uploads/<%= product.pathOfImage %>" alt="can not find an image" height="150px">
-            <input type="text" value= "<%= product.name %>" name="name" id="">
-            <input type="text" value= "<%= product.description %>" name="description" id="">
-            <input type="number" value= "<%= product.price %>" name="price" id="">
-            <button type="submit">Update</button>
-            <a href="/remove/<%= product._id %>"> <span class="fas fa-times">Delete</span></a>
-        </form>
-    </li>
-    <% } else { %>
-    <li>
-        <div>
-            <img src="/uploads/<%= product.pathOfImage %>" alt="can not find an image" height="150px">
-            <span><%= product.name %> </span>
-            <span><%= product.description %> </span>
-            <span><%= product.price %> </span>
-        </div>
-        <a href="?editId=<%= product._id %>"><span class="fas fa-pen">Edit</span></a>    
-    </li>
-    <% } %>
-<% }) %>
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+<%- include('head.ejs') %>
+
+<body>
+    <a href="/addProduct">Add products</a>
+    <ul>
+        <% products.forEach (product => { %>
+            <% if (product._id == editId) { %>
+             <li>
+                <form action="/edit/<%= product._id %>" method="post">
+                    <img src="/uploads/<%= product.pathOfImage %>" alt="can not find an image" height="150px">
+                    <input type="text" value= "<%= product.name %>" name="name" id="">
+                    <input type="text" value= "<%= product.description %>" name="description" id="">
+                    <input type="number" value= "<%= product.price %>" name="price" id="">
+                    <button type="submit">Update</button>
+                    <a href="/remove/<%= product._id %>"> <span class="fas fa-times">Delete</span></a>
+                </form>
+            </li>
+            <% } else { %>
+            <li>
+                <div>
+                    <img src="/uploads/<%= product.pathOfImage %>" alt="can not find an image" height="150px">
+                    <span><%= product.name %> </span>
+                    <span><%= product.description %> </span>
+                    <span><%= product.price %> </span>
+                </div>
+                <a href="?editId=<%= product._id %>"><span class="fas fa-pen">Edit</span></a>    
+            </li>
+            <% } %>
+        <% }) %>
+    </ul>
+</body>
+</html>
