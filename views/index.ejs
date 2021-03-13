@@ -16,18 +16,18 @@
           <section class="productList">
             
             <div class="container">
-              <h1 class= "pdtList">Now Let's Jam....!!</h1>
+              <p class= "pdtList">LorLorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, placeat. In, rem! Iste, quisquam optio molestias doloribus hic reiciendis esse eveniet dicta harum. Ipsam quisquam facilis similique incidunt ducimus. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, placeat. In, rem! Iste, quisquam optio molestias doloribus hic reiciendis esse eveniet dicta harum. Ipsam quisquam facilis similique incidunt ducimus. Iste!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, placeat. In, rem! Iste, quisquam optio molestias doloribus hic reiciendis esse eveniet dicta harum. Ipsam quisquam facilis similique incidunt ducimus. Iste!</p>
               <div class="row">
                 <% products.forEach(product => { %>
                 <div class="card col-12 col-md-6 col-lg-6 minicard" style="width: 18rem;">
-                  <h4 class="card-title">Hey, I am <%= product.name %></h4>
+                  
                   <a class="imagebox" href="/products/<%= product.id %>"><img src="/uploads/<%= product.pathOfImage %>" class="card-img-top myImg" alt=""></a>
                   <div class="card-body">
-                    <a class="imagebox" href="/products/<%= product.id %>">Clicl me to know more</a>
+                    <a class="imagebox" href="/products/<%= product.id %>"><h5 class="card-title"> <%= product.name %></h5></a>
                     <p class="card-text"> <%= product.price %> SEK</p>
                     <span class="buyBtn">
                       
-                      <input type="submit" value="Take me home " class="buybtn">
+                      <input type="submit" value="Buy " class="buybtn">
                     </span>
                   </div>
                 </div>
@@ -37,7 +37,7 @@
         <% if(pageIndex * pageSize < totalProductCount) { %>
           <% pageIndex += 1 %>
         <div id="bottom"  style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
-            <a class="loadMore"  href="<%= `/?pageIndex=${pageIndex}` %>">Load More...</a>
+            <a class="loadMore"  href="<%= `/?pageIndex=${pageIndex}` %>">Load More</a>
         </div>
       <% } %>
        </section>
