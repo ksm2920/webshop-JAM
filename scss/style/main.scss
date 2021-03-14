@@ -1,5 +1,6 @@
 @import 'responsive';
 @import 'user';
+@import 'admin';
    
 
 body{
@@ -13,10 +14,18 @@ body{
     
     
 }
+
+#logo {
+    font-family: 'Special Elite', cursive;
+    font-size: 40px;
+    margin-left: 20px;
+}
+
 #menu {
     
     background-color: rgb(70, 37, 24);
     color: white;
+    z-index: 3;
 }
 
 #menu-list {

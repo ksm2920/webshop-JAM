@@ -3,32 +3,52 @@
 <%- include('head.ejs') %>
 
 <body>
-    <a href="/addProduct">Add products</a>
-    <ul>
-        <% products.forEach (product => { %>
+    <%- include('header.ejs') %>
+    <main>
+        <section>
+            <%- include('productForm.ejs') %>
+            <div>
+            <ul class="admin-productList">
+            <% products.forEach (product => { %>
             <% if (product._id == editId) { %>
-             <li>
-                <form action="/edit/<%= product._id %>" method="post">
-                    <img src="/uploads/<%= product.pathOfImage %>" alt="can not find an image" height="150px">
-                    <input type="text" value= "<%= product.name %>" name="name" id="">
-                    <input type="text" value= "<%= product.description %>" name="description" id="">
-                    <input type="number" value= "<%= product.price %>" name="price" id="">
-                    <button type="submit">Update</button>
-                    <a href="/remove/<%= product._id %>"> <span class="fas fa-times">Delete</span></a>
-                </form>
-            </li>
-            <% } else { %>
-            <li>
-                <div>
-                    <img src="/uploads/<%= product.pathOfImage %>" alt="can not find an image" height="150px">
-                    <span><%= product.name %> </span>
-                    <span><%= product.description %> </span>
-                    <span><%= product.price %> </span>
-                </div>
-                <a href="?editId=<%= product._id %>"><span class="fas fa-pen">Edit</span></a>    
-            </li>
-            <% } %>
-        <% }) %>
-    </ul>
+                <li >
+                    <form action="/edit/<%= product._id %>" method="post">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-5 product-img">
+                        <img src="/uploads/<%= product.pathOfImage %>" alt="can not find an image" height="150px">
+                        </div>
+                        <div class="col-7 edit-form">
+                        <input type="text" value= "<%= product.name %>" name="name" id="">
+                        <input type="text" value= "<%= product.description %>" name="description" id="">
+                        <input type="number" value= "<%= product.price %>" name="price" id="">
+                        <button type="submit" class="btn btn-success">Update</button>
+                        <button class="btn btn-dark"><a href="/remove/<%= product._id %>"> Delete</a></button>
+                        </div>
+                    </form>
+                </li>
+                <% } else { %>
+                <li class="admin-productList">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-5 product-img">
+                            <img src="/uploads/<%= product.pathOfImage %>" alt="can not find an image" height="150px">
+                            </div>
+                            <div class="col-7 product-detail">  
+                                <a href="?editId=<%= product._id %>"><span class="fas fa-pen"></span></a>  
+                                <p><%= product.name %> </p>
+                                <p><%= product.description %> </p>
+                                <p><%= product.price %> </p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <% } %>
+            <% }) %>
+        </ul>
+    </div>
+    </section>
+    <%- include('footer.ejs') %>
+    </main>
 </body>
 </html>

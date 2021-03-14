@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<%- include('head.ejs') %>
-<body>
-    <form action="/addProduct" method="post"  enctype="multipart/form-data">
-        <input type="text" name="name" id="" placeholder="name">
-        <input type="text" name="description" id="" placeholder="description">
-        <input type="number" name="price" id="" placeholder="price">
-        <input type="file" name="image" id="">
-        <button type="submit">Add product</button>
-    </form>
-    <a href="/adminpage">Go to the product list</a>
-</body>
-</html>
+<form action="/adminPage" method="post"  enctype="multipart/form-data" class="product-form">
+    <h4 class="form-title">Product form</h4>
+    <input type="text" name="name" id="" placeholder="product name">
+    <input type="text" name="description" id="" placeholder="description">
+    <input type="number" name="price" id="" placeholder="price">
+    <input type="file" name="image" id="">
+    <button type="submit" class="btn btn-dark">Add product</button>
+</form>
