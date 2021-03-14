@@ -5,53 +5,50 @@
 <body>
     <%- include('header.ejs') %>
     <main>
-        <section>
+        <section class="admin-body">
+            <div class="container">
             <%- include('productForm.ejs') %>
-            <div class="admin-body">
                 <h3>Product list</h3>
                 <% if(!products || products.length ===0) { %>
-                    <p class="no-product">No products</p>
+                <p class="no-product">No products</p>
                 <% } else { %>
-            <ul class="admin-productList">
-            <% products.forEach (product => { %>
-            <% if (product._id == editId) { %>
-                <li >
-                    <form action="/edit/<%= product._id %>" method="post">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-12 product-img">
-                        <img src="/uploads/<%= product.pathOfImage %>" alt="can not find an image" height="150px">
-                        </div>
-                        <div class="col-12 edit-form">
-                        <input type="text" value= "<%= product.name %>" name="name" id="">
-                        <input type="text" value= "<%= product.description %>" name="description" id="">
-                        <input type="number" value= "<%= product.price %>" name="price" id="">
-                        <button type="submit" class="btn btn-success">Update</button>
-                        <button class="btn btn-dark"><a href="/remove/<%= product._id %>"> Delete</a></button>
-                        </div>
-                    </form>
-                </li>
-                <% } else { %>
-                <li class="admin-productList">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 product-img">
-                            <img src="/uploads/<%= product.pathOfImage %>" alt="can not find an image" height="150px">
+                <div class="row">
+                    <% products.forEach (product => { %>
+                        <% if (product._id == editId) { %>
+                            <!-- editing product list -->
+                            <div class="card col-12 col-md-4 col-lg-3">
+                                <form action="/edit/<%= product._id %>" method="post">
+                                    <div class="product-img">
+                                    <img src="/uploads/<%= product.pathOfImage %>" alt="can not find an image" height="150px">
+                                    </div>
+                                    <div class="edit-form">
+                                    <input type="text" value= "<%= product.name %>" name="name" id="">
+                                    <input type="text" value= "<%= product.description %>" name="description" id="">
+                                    <input type="number" value= "<%= product.price %>" name="price" id="">
+                                    <button type="submit" class="btn btn-success">Update</button>
+                                    <button class="btn btn-dark"><a href="/remove/<%= product._id %>"> Delete</a></button>
+                                    </div>
+                                </form>
                             </div>
-                            <div class="col-12 product-detail">  
-                                <a href="?editId=<%= product._id %>"><span class="fas fa-pen"></span></a>  
-                                <h5 style="font-weight: bold;"><%= product.name %> </h5>
-                                <p><%= product.description %> </p>
-                                <p style="font-weight:bold"><%= product.price %> kr</p>
+                        <% } else { %>
+                            <!-- showing product list -->
+                            <div class="card col-12 col-md-4 col-lg-3">
+                                <div class="product-img">
+                                    <img src="/uploads/<%= product.pathOfImage %>" alt="can not find an image" height="150px">
+                                </div>
+                                <div class="product-detail">  
+                                    <a href="?editId=<%= product._id %>"><span class="fas fa-pen"></span></a>  
+                                    <h5 style="font-weight: bold;"><%= product.name %> </h5>
+                                    <p><%= product.description %> </p>
+                                    <p style="font-weight:bold"><%= product.price %> SEK</p>
+                                </div>                                
                             </div>
-                        </div>
-                    </div>
-                </li>
-                <% } %>
-            <% }) %>
-        </ul>
-        <% } %>
-    </div>
+                        <% } %>
+                    <% }) %>
+                </div>
+            <% } %>
+        </div>
+       
     </section>
     <%- include('footer.ejs') %>
     </main>
