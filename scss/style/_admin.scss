@@ -17,7 +17,7 @@
     flex-direction: column;
     align-items: center; 
     input {
-        border: 1px solid rgb(43, 9, 9);
+        border: 1px solid rgb(70, 37, 24);
         border-radius: 4px;
         padding: 10px;
         margin-top: 10px;
@@ -29,7 +29,7 @@
         padding: 0;
         height: 40px;
         width: 300px;
-        background-color:  rgb(43, 9, 9);
+        background-color:  rgb(70, 37, 24);
     }
     p {
         font-size: 15px;
@@ -48,9 +48,9 @@
 
 .product-detail {
     padding: 20px;
-    color:rgb(43, 9, 9);
+    color:rgb(70, 37, 24);
     a {
-        color:rgb(43, 9, 9);
+        color:rgb(70, 37, 24);
         float: right;
     }
 }
@@ -68,4 +68,8 @@
             color: white;
         }
     }
+}
+
+.error {
+    color:orangered;
 }
