@@ -27,19 +27,17 @@
               <div class="row">
                 <% products.forEach(product => { %>
                 <div class="card col-12 col-md-4 col-lg-3 minicard" style="width: 18rem;">
-                  
                   <a class="imagebox" href="/products/<%= product.id %>"><img src="/uploads/<%= product.pathOfImage %>" class="card-img-top myImg" alt=""></a>
                   <div class="card-body">
                     <a class="imagebox" href="/products/<%= product.id %>"><h5 class="card-title"> <%= product.name %></h5></a>
                     <p class="card-text"> <%= product.price %> SEK</p>
-                    <span class="buyBtn">
-                      
+                    <!-- <span class="buyBtn">
                       <input type="submit" value="Buy " class="buybtn">
-                    </span>
+                    </span> -->
                   </div>
                 </div>
                 <% }); %>
-          </div> 
+              </div> 
         </div>
         <% if(pageIndex * pageSize < totalProductCount) { %>
           <% pageIndex += 1 %>
