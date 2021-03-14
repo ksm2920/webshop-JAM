@@ -56,7 +56,7 @@ const editProductFormSubmit = async (req, res) => {
 const removeProductFromList = async (req, res) => {
     const id = req.params.id;
     const user = await User.findOne({_id:req.user.user._id});
-    user.removeProdcut(id);
+    user.removeProduct(id);
 
     await Product.findByIdAndRemove(id, {name: req.body.name}, () => {
         res.redirect("/adminPage");

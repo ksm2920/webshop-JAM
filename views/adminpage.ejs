@@ -7,7 +7,11 @@
     <main>
         <section>
             <%- include('productForm.ejs') %>
-            <div>
+            <div class="admin-body">
+                <h3>Product list</h3>
+                <% if(!products || products.length ===0) { %>
+                    <p class="no-product">No products</p>
+                <% } else { %>
             <ul class="admin-productList">
             <% products.forEach (product => { %>
             <% if (product._id == editId) { %>
@@ -15,10 +19,10 @@
                     <form action="/edit/<%= product._id %>" method="post">
                         <div class="container">
                             <div class="row">
-                                <div class="col-5 product-img">
+                                <div class="col-12 product-img">
                         <img src="/uploads/<%= product.pathOfImage %>" alt="can not find an image" height="150px">
                         </div>
-                        <div class="col-7 edit-form">
+                        <div class="col-12 edit-form">
                         <input type="text" value= "<%= product.name %>" name="name" id="">
                         <input type="text" value= "<%= product.description %>" name="description" id="">
                         <input type="number" value= "<%= product.price %>" name="price" id="">
@@ -31,14 +35,14 @@
                 <li class="admin-productList">
                     <div class="container">
                         <div class="row">
-                            <div class="col-5 product-img">
+                            <div class="col-12 product-img">
                             <img src="/uploads/<%= product.pathOfImage %>" alt="can not find an image" height="150px">
                             </div>
-                            <div class="col-7 product-detail">  
+                            <div class="col-12 product-detail">  
                                 <a href="?editId=<%= product._id %>"><span class="fas fa-pen"></span></a>  
-                                <p><%= product.name %> </p>
+                                <h5 style="font-weight: bold;"><%= product.name %> </h5>
                                 <p><%= product.description %> </p>
-                                <p><%= product.price %> </p>
+                                <p style="font-weight:bold"><%= product.price %> kr</p>
                             </div>
                         </div>
                     </div>
@@ -46,6 +50,7 @@
                 <% } %>
             <% }) %>
         </ul>
+        <% } %>
     </div>
     </section>
     <%- include('footer.ejs') %>
