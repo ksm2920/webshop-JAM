@@ -16,7 +16,7 @@
                     <% products.forEach (product => { %>
                         <% if (product._id == editId) { %>
                             <!-- editing product list -->
-                            <div class="card col-12 col-md-4 col-lg-3">
+                            <div class="card col-12 col-md-4 col-lg-3 admin-productList">
                                 <form action="/edit/<%= product._id %>" method="post">
                                     <div class="product-img">
                                     <img src="/uploads/<%= product.pathOfImage %>" alt="can not find an image" height="150px">
@@ -32,7 +32,7 @@
                             </div>
                         <% } else { %>
                             <!-- showing product list -->
-                            <div class="card col-12 col-md-4 col-lg-3">
+                            <div class="card col-12 col-md-4 col-lg-3 admin-productList">
                                 <div class="product-img">
                                     <img src="/uploads/<%= product.pathOfImage %>" alt="can not find an image" height="150px">
                                 </div>
