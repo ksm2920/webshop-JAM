@@ -1,8 +1,11 @@
 @import 'responsive';
+@import 'user';
+@import 'admin';
+@import 'product';
    
 
 body{
-    color: rgba(49, 6, 6, 0.897);
+    color: rgb(70, 37, 24);
     //color: rgb(240, 113, 40);
     //font-weight: 600;
     background-color:white;
@@ -12,12 +15,33 @@ body{
     
     
 }
+.navigation {
+    a:hover {
+        color: orange;
+    }
+}
+#logo {
+    font-family: 'Special Elite', cursive;
+    font-size: 40px;
+    margin-left: 20px;
+}
+
 #menu {
     
-    background-color: rgb(43, 9, 9);
+    background-color: rgb(70, 37, 24);
     color: white;
-    
-    
+    z-index: 3;
+}
+
+#menu-list {
+    li {
+        :hover{
+            color:orange;
+        }
+    }
+    @include desktop {
+        margin-left: 100px;
+    }
 }
 .navIcon{
     color: white;
@@ -32,15 +56,23 @@ body{
     align-items: center;
     justify-content: center;
     background-color:transparent;
-    padding: 80px;
+    @include desktop{
+        margin-top: 50px;
+    }
     
+}
+video {
+    @include desktop {
+        width: 70%;
+    }
+   
 }
 .card-title{
     height: 30px;
     width: 195px;
     margin: 30px;
     //background-color: rgb(43, 9, 9);
-    color:rgb(43, 9, 9);
+    color:rgb(70, 37, 24);
     //box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
     //z-index: 2;
     
@@ -61,27 +93,26 @@ body{
     transition: all 0.75s ease-out;
     justify-content: space-around;
     //box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2)
-
 }
 
 
 #footercontent{
-    height: 100px;
-    background-color:beige;
-    color:rgb(43, 9, 9);
+    height: 150px;
+    background-color:rgb(248, 230, 206);
+    color:rgb(70, 37, 24);
     text-align: center;
-    font-weight: 800;
     font-size: 20px;
-    padding: 8px;
 }
+
+.contact {
+    margin-top: 30px;
+}
+
 .productList{
     //background-color:rgb(206, 201, 204);
     background-color:transparent;
     //background-image: linear-gradient(#a8ff78, #78ffd6)
     border-color:none;
-    
-    
-
 }
 
 .minicard{
@@ -102,12 +133,12 @@ body{
     
 }
 .loadMore{
-    border: 2px solid rgb(43, 9, 9);
-    color: rgb(68, 3, 3) ;
-    box-shadow: 0 20px 20px rgba(240, 113, 40, 0.2), 0px 0px 50px rgba(240, 113, 40, 0.2);
+    border: none;
+    color:rgb(70, 37, 24) ;
+    // box-shadow: 0 20px 20px rgba(240, 113, 40, 0.2), 0px 0px 50px rgba(240, 113, 40, 0.2);
     font-size: 28px;
     &:hover{
-        background-color: rgb(43, 9, 9);
+        background-color:rgb(70, 37, 24);
         color:white ;
         z-index: 2;
     }
@@ -127,17 +158,18 @@ body{
     
 }
 .myCart{
-    padding: 20px;
-    padding-right: 30px;
-    padding-bottom: 30px;
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
     color:white;
+    font-size: 25px;
+    // padding: 20px;
+    // padding-right: 30px;
+    // padding-bottom: 30px;
+    // height: 50px;
+    // width: 50px;
+    // border-radius: 50%;
     &:hover{
-        background-color: white;
-        color:rgb(68, 3, 3) ;
-        box-shadow: 0 20px 20px rgba(240, 113, 40, 0.2), 0px 0px 50px rgba(240, 113, 40, 0.2);
+        // background-color: white;
+        color:orange;
+        // box-shadow: 0 20px 20px rgba(240, 113, 40, 0.2), 0px 0px 50px rgba(240, 113, 40, 0.2);
     }
 
 }
@@ -145,23 +177,30 @@ body{
 .buybtn{
   height: 40px;
   width: 150px;
-  background-color: rgb(43, 9, 9);
+  background-color: rgb(70, 37, 24);
+  border:none;
+  border-radius: 4px;
   color:white ;
-  font-weight: 800;
-  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
+//   font-weight: 800;
+//   box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
   z-index: 2;
  
-}
-
-.containerProduct{
-    padding-left: 25%;
 }
 .PrdtPg{
     background-color:white;
 }
-.pdtList{
+.about{
     align-items: center;
-    
-    padding-left: 50px;
-    padding-top: 20px;
+    text-align: center;
+    margin: 20px 10px;
+    font-size: 12px;
+    @include desktop {  
+    }
 }
+
+.PrdList {
+    margin-top: 50px;
+    align-items: center;
+    text-align: center;
+}
+

@@ -44,8 +44,9 @@ userSchema.methods.addProductList = function(productId) {
     this.save();
 }
 
-userSchema.methods.removeProdcut = function(productId) {
-    this.productList.filter( product => product._id != productId)
+userSchema.methods.removeProduct = function(productId) {
+    this.productList = this.productList.filter( product => product._id != productId);
+    this.save();
 }
 
 userSchema.methods.addToCart = function(productId) {

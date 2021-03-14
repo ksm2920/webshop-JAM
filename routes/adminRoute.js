@@ -4,7 +4,7 @@ const verifyAdmin = require('../middleware/verifyAdmin');
 
 const router = express.Router();
 
-const {addProductForm, addProductFormSubmit, adminProductListRender,  editProductFormSubmit, removeProductFromList} = require('../controller/adminController');
+const {addProductFormSubmit, adminProductListRender,  editProductFormSubmit, removeProductFromList} = require('../controller/adminController');
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -16,11 +16,9 @@ var storage = multer.diskStorage({
 })
 var upload = multer({storage: storage});
 
-router.get('/addProduct', verifyAdmin, addProductForm);
-
-router.post('/addProduct', [verifyAdmin, upload.single('image')], addProductFormSubmit);
-
 router.get('/adminPage', verifyAdmin, adminProductListRender);
+
+router.post('/adminPage', [verifyAdmin, upload.single('image')], addProductFormSubmit);
 
 router.post('/edit/:id', verifyAdmin, editProductFormSubmit);
 
