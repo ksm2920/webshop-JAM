@@ -14,7 +14,11 @@ body{
     
     
 }
-
+.navigation {
+    a:hover {
+        color: orange;
+    }
+}
 #logo {
     font-family: 'Special Elite', cursive;
     font-size: 40px;
@@ -29,6 +33,11 @@ body{
 }
 
 #menu-list {
+    li {
+        :hover{
+            color:orange;
+        }
+    }
     @include desktop {
         margin-left: 100px;
     }
@@ -88,14 +97,17 @@ video {
 
 
 #footercontent{
-    height: 200px;
+    height: 150px;
     background-color:rgb(231, 213, 190);
-    color:rgb(70, 37, 24);
+    color:rgb(43, 9, 9);
     text-align: center;
-    font-weight: 800;
     font-size: 20px;
-    padding: 8px;
 }
+
+.contact {
+    margin-top: 30px;
+}
+
 .productList{
     //background-color:rgb(206, 201, 204);
     background-color:transparent;
@@ -149,17 +161,18 @@ video {
     
 }
 .myCart{
-    padding: 20px;
-    padding-right: 30px;
-    padding-bottom: 30px;
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
     color:white;
+    font-size: 25px;
+    // padding: 20px;
+    // padding-right: 30px;
+    // padding-bottom: 30px;
+    // height: 50px;
+    // width: 50px;
+    // border-radius: 50%;
     &:hover{
-        background-color: white;
-        color:rgb(68, 3, 3) ;
-        box-shadow: 0 20px 20px rgba(240, 113, 40, 0.2), 0px 0px 50px rgba(240, 113, 40, 0.2);
+        // background-color: white;
+        color:orange;
+        // box-shadow: 0 20px 20px rgba(240, 113, 40, 0.2), 0px 0px 50px rgba(240, 113, 40, 0.2);
     }
 
 }
