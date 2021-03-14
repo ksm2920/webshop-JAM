@@ -1,0 +1,15 @@
+.product-body {
+    margin: 15% 0;
+}
+
+.img-center {
+    text-align: center;
+    @include desktop {
+        text-align: right;
+    }
+}
+
+.product-detail {
+    padding-top: 30px;
+    padding-left: 50px;
+}

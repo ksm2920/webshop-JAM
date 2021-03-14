@@ -1,6 +1,7 @@
 @import 'responsive';
 @import 'user';
 @import 'admin';
+@import 'product';
    
 
 body{
@@ -92,7 +93,6 @@ video {
     transition: all 0.75s ease-out;
     justify-content: space-around;
     //box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2)
-
 }
 
 
@@ -113,9 +113,6 @@ video {
     background-color:transparent;
     //background-image: linear-gradient(#a8ff78, #78ffd6)
     border-color:none;
-    
-    
-
 }
 
 .minicard{
@@ -189,10 +186,6 @@ video {
   z-index: 2;
  
 }
-
-.containerProduct{
-    padding-left: 25%;
-}
 .PrdtPg{
     background-color:white;
 }
@@ -201,8 +194,7 @@ video {
     text-align: center;
     margin: 20px 10px;
     font-size: 12px;
-    @include desktop {
-        
+    @include desktop {  
     }
 }
 
@@ -211,3 +203,4 @@ video {
     align-items: center;
     text-align: center;
 }
+
