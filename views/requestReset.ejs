@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('head.ejs') %>
+<body>
+    <%- include('header.ejs') %>
+    <main>
+        <section>
+            <div class="form-body">
+                <form action="/reset" method="post" class=" form request-link">
+                    <div>
+                        <h4>Forgot Password</h4>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your email">
+                    </div>
+                    <button type="submit" class="btn btn-dark">Send link</button>
+                </form>
+            </div>
+        </section>
+        <%- include('footer.ejs') %>
+    </main>
+</body>
+</html>

@@ -24,7 +24,8 @@ const loadProducts = async (req, res) => {
     catch(err){
       error = err;
     }
-    res.render('index.ejs', { products,  error, pageIndex, pageSize, totalProductCount});
+
+    res.render('index.ejs', { products,  error, pageIndex, pageSize, totalProductCount, user: req.user});
 }
 
 module.exports = { loadProducts }
