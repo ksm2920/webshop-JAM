@@ -1,7 +1,8 @@
 .form-body {
     height:90vh;
 }
-.login-form, .register-form {
+.login-form, .register-form, 
+.request-link, .reset-form {
     color: black;
     background:rgb(248, 230, 206);
     border-radius: 10px;
@@ -33,4 +34,19 @@
         font-size: 15px;
         margin-top: 10px;
     }
+}
+
+.check-mail {
+    line-height: 400px;
+    height: 90vh;
+    text-align: center;
+    p {
+        line-height: 1.5;
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
+
+.email {
+    text-align: center;
 }
