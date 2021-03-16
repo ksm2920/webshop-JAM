@@ -11,7 +11,7 @@ const adminProductListRender = async (req, res) => {
 
   const products = users[0].productList;
 
-  res.render("adminPage.ejs", { products, editId, error: "", cartItems: null });
+  res.render("adminPage.ejs", { products, editId, error: "", cartItems: null, user: req.user });
 };
 
 const addProductFormSubmit = async (req, res) => {

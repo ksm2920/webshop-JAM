@@ -27,17 +27,12 @@
         <li class="nav-item">
           <a class="nav-link menuColor" href="/login">Login</a>
         </li>
+        <% if(locals.user) { %>
         <li class="nav-item">
           <a class="nav-link menuColor" href="/adminPage">Admin</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link menuColor" href="/logout">Logout</a>
-        </li>
-        <% if(locals.user) { %>
-        <li> 
-          <p><%=user.user.name %></p>
-        </li>
         <% } %>
+
       
       </ul>
       <form class="form-inline my-2 my-lg-0">
