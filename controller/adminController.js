@@ -7,8 +7,6 @@ const adminProductListRender = async (req, res) => {
     "productList"
   );
 
-  console.log(users);
-
   console.log(users[0].productList);
 
   const products = users[0].productList;
