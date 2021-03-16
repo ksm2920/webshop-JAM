@@ -44,8 +44,13 @@ const removeFromCart = async (req, res) => {
   }
 };
 
+const checkoutRender = async (req, res) => {
+  res.render("checkout.ejs", { cartItems: null });
+};
+
 module.exports = {
   addToShoppingCart,
   decreaseProduct,
   removeFromCart,
+  checkoutRender,
 };
