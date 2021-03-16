@@ -25,5 +25,13 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ksm2920/webshop-JAM.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ksm2920/webshop-JAM/issues"
+  },
+  "homepage": "https://github.com/ksm2920/webshop-JAM#readme"
 }

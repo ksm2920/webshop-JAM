@@ -2,7 +2,7 @@
 <html lang="en">
 <%- include('head.ejs') %>
 
-<body onload="ScrollToBottom(<%= pageIndex %>);">
+<body onload="ScrollToBottom('<%= pageIndex %>')";>
   <%- include('header.ejs') %>
         <main>
           <section class="highlighter">
@@ -34,6 +34,9 @@
                     <!-- <span class="buyBtn">
                       <input type="submit" value="Buy " class="buybtn">
                     </span> -->
+                    <a href="/addToCart/<%= product.id %>" class="add-to-cart">
+            <span class="fas fa-shopping-basket"></span>
+          </a>
                   </div>
                 </div>
                 <% }); %>
