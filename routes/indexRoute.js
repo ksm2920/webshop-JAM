@@ -1,8 +1,8 @@
-var express = require('express');
-const { loadProducts } = require('../controller/indexController');
+var express = require("express");
+const { loadProducts } = require("../controller/indexController");
+const getUser = require("../middleware/getUser");
 var router = express.Router();
 const getUser = require('../middleware/getUser');
-
 
 
 // GET home page. 
