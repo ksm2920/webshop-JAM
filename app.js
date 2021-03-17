@@ -8,6 +8,7 @@ const adminRouter = require("./routes/adminRoute");
 const indexRouter = require("./routes/indexRoute");
 const productRouter = require("./routes/productRoute");
 const cartRouter = require("./routes/cartRoute");
+const checkoutRouter = require("./routes/checkoutRoute");
 
 const nodeSass = require("node-sass-middleware");
 require("dotenv").config();
@@ -34,6 +35,7 @@ app.use("/", userRouter);
 app.use("/", adminRouter);
 app.use("/", productRouter);
 app.use("/", cartRouter);
+app.use("/", checkoutRouter);
 
 const option = {
   useNewUrlParser: true,
