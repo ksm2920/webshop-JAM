@@ -137,6 +137,7 @@ video {
 .menuColor {
   color: white;
 }
+
 .myCartBtn {
   color: white;
   height: 50px;
@@ -212,4 +213,7 @@ video {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
+}
+.hidden {
+  display: none;
 }

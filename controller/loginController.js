@@ -5,7 +5,6 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const loginRender = (req, res) => {
-  res.clearCookie("jwtToken");
   res.render("login.ejs", { error: "", cartItems: null });
 };
 
