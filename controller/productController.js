@@ -15,7 +15,7 @@ const loadProductDetails = async (req, res) => {
       }).populate("shoppingCart.productId");
 
       res.render("product.ejs", {
-        products,
+        product,
         error,
         cartItems: userWithCourseData.shoppingCart,
       });
@@ -24,6 +24,7 @@ const loadProductDetails = async (req, res) => {
     }
   } catch (err) {
     error = err;
+    console.error(err)
   }
 };
 
