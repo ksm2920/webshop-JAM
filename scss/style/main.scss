@@ -59,6 +59,11 @@ video {
     width: 70%;
   }
 }
+#space-btw {
+  margin-top: 50px;
+  margin-bottom: 10px;
+
+}
 .card-title {
   height: 30px;
   width: 195px;
@@ -70,11 +75,14 @@ video {
 }
 .myImg {
   //height: 280px;
-  width: 195px;
+  width: 150px;
   z-index: 2;
   transition: all 0.75s ease-out;
   -webkit-filter: drop-shadow(5px 5px 5px rgb(59, 59, 59));
   filter: drop-shadow(5px 5px 5px rgb(59, 59, 59));
+  @include desktop {
+    width:200px;
+  }
 }
 .imagebox {
   transform-style: preserve-3d;
