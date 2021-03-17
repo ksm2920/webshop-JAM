@@ -3,28 +3,16 @@ const Joi = require("joi");
 
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  lastname: { type: String, required: true },
+  lastname: String,
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   role: String,
   token: String,
   tokenExpiration: Date,
-  address: {
-    type: String,
-    require: true,
-  },
-  city: {
-    type: String,
-    require: true,
-  },
-  zipcode: {
-    type: Number,
-    require: true,
-  },
-  phone: {
-    type: Number,
-    require: true,
-  },
+  address: String,
+  city: String,
+  zipcode: Number,
+  phone: Number,
   productList: [
     {
       type: mongoose.Schema.Types.ObjectId,
