@@ -2,11 +2,11 @@
 <html lang="en">
 <%- include('head.ejs') %>
 
-<body onload="ScrollToBottom(<%= pageIndex %>);">
+<body onload="ScrollToBottom('<%= pageIndex %>')";>
   <%- include('header.ejs') %>
         <main>
           <section class="highlighter">
-            <video id="vid" width="50%" controls autoplay muted loop>
+            <video id="vid" width="100%" controls autoplay muted loop>
               <source src="/pictures/videos/promo.mp4" type="video/mp4">
               
               Your browser does not support the video tag.
@@ -16,23 +16,31 @@
           <section class="productList">
             
             <div class="container">
-              <p class= "pdtList">LorLorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, placeat. In, rem! Iste, quisquam optio molestias doloribus hic reiciendis esse eveniet dicta harum. Ipsam quisquam facilis similique incidunt ducimus. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, placeat. In, rem! Iste, quisquam optio molestias doloribus hic reiciendis esse eveniet dicta harum. Ipsam quisquam facilis similique incidunt ducimus. Iste!Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, placeat. In, rem! Iste, quisquam optio molestias doloribus hic reiciendis esse eveniet dicta harum. Ipsam quisquam facilis similique incidunt ducimus. Iste!</p>
+              <p class= "about">Ipsam quisquam facilis similique incidunt ducimus. LorLorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, placeat. In, rem! Iste, quisquam optio molestias doloribus hic reiciendis esse eveniet dicta harum.
+                Ipsam quisquam facilis similique incidunt ducimus. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, placeat. In, rem! Iste, quisquam optio molestias doloribus hic reiciendis esse eveniet dicta harum. 
+              </br>
+              </br> 
+                Ipsam quisquam facilis similique incidunt ducimus. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, placeat. In, rem! Iste, quisquam optio molestias doloribus hic reiciendis esse eveniet dicta harum. 
+                Ipsam quisquam facilis similique incidunt ducimus. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, placeat. In, rem! Iste, quisquam optio molestias doloribus hic reiciendis esse eveniet dicta harum. 
+              </p>
+              <h3 class="PrdList">Our product</h3>
               <div class="row">
                 <% products.forEach(product => { %>
-                <div class="card col-12 col-md-6 col-lg-6 minicard" style="width: 18rem;">
-                  
+                <div class="card col-6 col-md-4 col-lg-3 minicard" id="space-btw" style="width: 18rem;">
                   <a class="imagebox" href="/products/<%= product.id %>"><img src="/uploads/<%= product.pathOfImage %>" class="card-img-top myImg" alt=""></a>
                   <div class="card-body">
                     <a class="imagebox" href="/products/<%= product.id %>"><h5 class="card-title"> <%= product.name %></h5></a>
                     <p class="card-text"> <%= product.price %> SEK</p>
                     <span class="buyBtn">
-                      
                       <input type="submit" value="Buy " class="buybtn">
                     </span>
+                    <!-- <a href="/addToCart/<%= product.id %>" class="add-to-cart">
+                    <span class="fas fa-shopping-basket"></span>
+                    </a> -->
                   </div>
                 </div>
                 <% }); %>
-          </div> 
+              </div> 
         </div>
         <% if(pageIndex * pageSize < totalProductCount) { %>
           <% pageIndex += 1 %>
@@ -41,25 +49,8 @@
         </div>
       <% } %>
        </section>
-    
+       <%- include('footer.ejs') %>
       </main>
-      <footer id="footercontent">
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <p class="email"> email:Hello@jam.com </p>
-    
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-12">
-                <i class="fab fa-facebook"></i>
-                <i class="fab fa-twitter-square"></i>
-                <i class="fab fa-instagram-square"></i>
-              </div>
-            </div>
-          </div>
-        </footer>
         <script src="/javascripts/index.js"></script>
       </body>
     </html>

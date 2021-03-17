@@ -1,0 +1,76 @@
+<div
+  class="modal fade"
+  id="checkoutModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">My Shopping Cart:</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body container">
+        <% if(cartItems) {%> <%cartItems.forEach( cartItem => { %>
+        <div class="row cartCard my-4">
+          <div class="col-5 col-md-4 col-lg-4 cart-img">
+            <img
+              src="/uploads/<%= cartItem.productId.pathOfImage %> "
+              alt="<%= cartItem.productId.name %>"
+              width="60px"
+              height="42px"
+              class="img-thumbnail"
+            />
+          </div>
+          <div class="col-3 col-md-4 col-lg-4 cart-info">
+            <div class="pricing">
+              <span><strong><%= cartItem.productId.name%></strong></span>
+              <span><%= cartItem.productId.price %> kr</span>
+            </div>
+            <div>
+              <span>Antal: </span>
+            </div>
+          </div>
+          <div class="col-4 col-md-4 col-lg-4 cart-quantity pr-lg-5">
+            <a class="btn" href="/removeFromCart/<%= cartItem.productId._id %>">
+              <i class="fas fa-trash-alt fa-lg"></i>
+            </a>
+            <div class="change-quantity">
+              <a href="/removeFromCart/<%= cartItem.productId._id %>"
+                ><button type="button">-</button></a
+              >
+              <input
+                class="col-4 p-0"
+                type="number"
+                style="width: 100%"
+                value="<%= cartItem.quantity %>"
+              />
+              <a href="/addToCart/<%= cartItem.productId._id %>"
+                ><button type="button">+</button></a
+              >
+            </div>
+          </div>
+        </div>
+        <% }) %> <%} if(!cartItems || cartItems.length == 0) {%>
+        <div class="row">
+          <div class="col-12 col-md-12 col-lg-12">
+            <h5>You're cart is empty</h5>
+          </div>
+        </div>
+        <% } %>
+      </div>
+      <div class="modal-footer">
+        <h5 class="col-12">Total:</h5>
+        <a class="btn btn-primary col-12" href="/checkout"> Checkout </a>
+      </div>
+    </div>
+  </div>
+</div>

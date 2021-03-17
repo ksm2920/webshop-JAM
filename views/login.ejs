@@ -1,6 +1,31 @@
-<form action="/login" method="post">
-    <input type="email" name="email" id="" placeholder="email">
-    <input type="password" name="password" id="" placeholder="password">
-    <button type="submit">Login</button>
-    <%= error %>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<%- include('head.ejs') %>
+<body>
+    <%- include('header.ejs') %>
+    <main>
+        <section>
+            <div class="form-body">
+                <form action="/login" method="post" class="form-signin login-form">
+                    <div>
+                        <h4>Sign In</h4>
+                    </div>
+                    <div class="form-group" >
+                        <input type="email" name="email" id="" placeholder="email">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" id="" placeholder="password">
+                    </div>
+                    <button type="submit" class="btn btn-dark">Login</button>
+                    <p class="error"><%= error %></p>
+                    <div>
+                        <p class="help"><a href="/reset" class="help">Forgot password?</a></p>
+                        <p class="" id="">Not a member? <a href="/register" class="help">Sign up now</a></p>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <%- include('footer.ejs') %>
+    </main>
+</body>
+</html>

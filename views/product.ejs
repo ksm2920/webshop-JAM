@@ -4,40 +4,28 @@
 
 <body>
     <%- include('header.ejs') %>
-    
-    <section class="productList PrdtPg">
-        <div class="container containerProduct">
-            <div class="card col-12 col-md-6 col-lg-6 minicard" style="width: 18rem;">
-                
-                <img src="/uploads/<%= product.pathOfImage %>" class="card-img-top" alt="">
-                <div class="card-body">
-                    <h3 class="card-title"> <%= product.name %></h3>
-                    <p class="card-text"> <%= product.description %></p>
-                    <p class="card-text"> <%= product.price %> SEK</p>
-                    <span class="buyBtn">
-                
-                        <input type="submit" value="Take me home" class="buybtn">
-                    </span>
+    <main>
+        <section class="productList PrdtPg">
+            <div class="container product-body">
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-6 img-center">
+                        <img src="/uploads/<%= product.pathOfImage %>" alt="jam" class="product-img">
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-6 product-detail" >
+                        <h3 class=> <%= product.name %></h3>
+                        <p class=> <%= product.description %></p>
+                        <p class=> <%= product.price %> SEK</p>
+                        <p style="font-weight: bold;"id="showContent"><i class="fas fa-plus" onclick="showContent('content')"></i> Content 100 g</p>
+                        <p id="content" class="hidden"><%= product.content %></p>
+                        <span class="buyBtn">
+                            <input type="submit" value="Buy" class="buybtn">
+                        </span>
+                    </div>
                 </div>
             </div>
-        </div>
-</section >
-    <footer id="footercontent">
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <p class="email"> email:Hello@jam.com </p>
-    
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-12">
-                <i class="fab fa-facebook"></i>
-                <i class="fab fa-twitter-square"></i>
-                <i class="fab fa-instagram-square"></i>
-              </div>
-            </div>
-          </div>
-        </footer>
+        </section >
+        <%- include('footer.ejs') %>
+    </main>
+    <script src="/javascripts/index.js"></script>
 </body>
 </html>
