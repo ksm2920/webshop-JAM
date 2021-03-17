@@ -44,8 +44,8 @@ body {
 }
 
 .highlighter {
-  height: auto;
-  width: auto;
+  //height: 100px;
+  //width: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,16 +54,8 @@ body {
     margin-top: 50px;
   }
 }
-video {
-  @include desktop {
-    width: 70%;
-  }
-}
-#space-btw {
-  margin-top: 50px;
-  margin-bottom: 10px;
 
-}
+
 .card-title {
   height: 30px;
   width: 195px;
@@ -216,4 +208,8 @@ video {
 }
 .hidden {
   display: none;
+}
+.heroSection{
+  height: 600px;
+  //width: 100%;
 }
