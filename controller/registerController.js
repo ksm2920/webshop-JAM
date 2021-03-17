@@ -10,7 +10,7 @@ const registerSubmit = async (req, res) => {
   const { error } = validateRegisterForm(req.body);
 
   if (error) {
-    return res.render("register.ejs", { error: error.details[0].message });
+    return res.render("register.ejs", { error: error.details[0].message, cartItems:null });
   }
   const { name, email, password } = req.body;
 
@@ -19,6 +19,7 @@ const registerSubmit = async (req, res) => {
   if (existingEmail) {
     return res.render("login.ejs", {
       error: "You already have an account with this email, please sign in.",
+      cartItems:null
     });
   }
 

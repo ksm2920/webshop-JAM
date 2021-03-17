@@ -11,17 +11,18 @@ const adminProductListRender = async (req, res) => {
 
   const products = users[0].productList;
 
-  res.render("adminPage.ejs", { products, editId, error: "", cartItems: null });
+  res.render("adminPage.ejs", { products, editId, error: "", cartItems: null, user: req.user });
 };
 
 const addProductFormSubmit = async (req, res) => {
-  const { name, description, price } = req.body;
+  const { name, description, price, content } = req.body;
   const pathOfImage = req.file.filename;
 
   const newProduct = await new Product({
     name: name,
     description: description,
     price: price,
+    content: content,
     pathOfImage: pathOfImage,
   });
 
@@ -39,13 +40,13 @@ const addProductFormSubmit = async (req, res) => {
 
 const editProductFormSubmit = async (req, res) => {
   const id = req.params.id;
-  const { name, description, price } = req.body;
+  const { name, description, price, content } = req.body;
 
   console.log(req.body);
   console.log(id);
   await Product.findByIdAndUpdate(
     id,
-    { name: name, description: description, price: price },
+    { name: name, description: description, price: price, content: content },
     () => {
       res.redirect("/adminPage");
     }

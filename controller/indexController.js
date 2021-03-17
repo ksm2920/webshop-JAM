@@ -37,6 +37,7 @@ const loadProducts = async (req, res) => {
       pageIndex,
       pageSize,
       totalProductCount,
+      user:req.user,
       cartItems: userWithCourseData.shoppingCart,
     });
   } else {

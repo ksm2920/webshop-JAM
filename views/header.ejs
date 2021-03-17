@@ -24,18 +24,19 @@
         <li class="nav-item">
           <a class="nav-link menuColor" href="/checkout">Checkout</a>
         </li>
+        <% if(!locals.user) { %>
         <li class="nav-item">
           <a class="nav-link menuColor" href="/login">Login</a>
         </li>
+        <% } %>
+        <% if(locals.user) { %>
+          <li class="nav-item">
+            <a class="nav-link menuColor" href="/logout">Logout</a>
+          </li>
+        <% } %>
+        <% if(locals.user && locals.user.user.role == "admin") { %>
         <li class="nav-item">
           <a class="nav-link menuColor" href="/adminPage">Admin</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link menuColor" href="/logout">Logout</a>
-        </li>
-        <% if(locals.user || user) { %>
-        <li>
-          <p><%=user.user.name %></p>
         </li>
         <% } %>
       </ul>
