@@ -7,7 +7,6 @@ const loadProductDetails = async (req, res) => {
   try {
     var error = null;
     var product = await Product.findOne({ _id });
-    console.log("Product", product);
     const token = req.cookies.jwtToken;
     if (token) {
       const userWithCourseData = await User.findOne({
@@ -24,7 +23,7 @@ const loadProductDetails = async (req, res) => {
     }
   } catch (err) {
     error = err;
-    console.error(err)
+    //console.error(err)
   }
 };
 

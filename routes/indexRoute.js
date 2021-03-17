@@ -1,10 +1,10 @@
 var express = require("express");
 const { loadProducts } = require("../controller/indexController");
-const getUser = require("../middleware/getUser");
+const verifyUser = require("../middleware/verifyUser");
 var router = express.Router();
 
 // GET home page.
-router.get("/", getUser, loadProducts);
+router.get("/", verifyUser, loadProducts);
 
 //router.get('/products/:name', loadProducts);
 

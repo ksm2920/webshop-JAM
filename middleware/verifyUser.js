@@ -5,7 +5,7 @@ const verifyUser = (req, res, next) => {
     const token = req.cookies.jwtToken;
 
     if(!token) {
-        return res.render('login.ejs', {error:""});
+        return res.render('login.ejs', {error:"", cartItems: []});
     }
 
     const validUser = jwt.verify(token, process.env.SECRET_KEY)

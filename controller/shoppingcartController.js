@@ -5,7 +5,6 @@ const addToShoppingCart = async (req, res) => {
   const user = await User.findOne({ _id: req.user.user._id });
   if (user) {
     const productId = req.params.id;
-    console.log(productId);
 
     if (productId !== null && productId !== undefined) {
       user.addToCart(productId);
@@ -16,7 +15,6 @@ const addToShoppingCart = async (req, res) => {
 
     res.redirect("/");
 
-    console.log(userWithCourseData.shoppingCart);
   }
 };
 
@@ -38,6 +36,7 @@ const removeFromCart = async (req, res) => {
     const productId = req.params.id;
 
     if (productId !== null && productId !== undefined) {
+      console.log("pid", productId);
       user.removeFromCart(productId);
     }
     res.redirect("/");

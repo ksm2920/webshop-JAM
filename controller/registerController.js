@@ -31,7 +31,6 @@ const registerSubmit = async (req, res) => {
     email: email,
     password: hashedPassword,
   });
-  console.log(newUser);
 
   newUser.save();
 
