@@ -49,7 +49,6 @@ const loginSubmit = async (req, res) => {
         return res.redirect("/adminPage");
       } else {
         res.redirect("/");
-        console.log(user);
       }
     }
 
@@ -58,10 +57,6 @@ const loginSubmit = async (req, res) => {
   } catch (err) {
     return res.render("login.ejs", { error: "System error" + err });
   }
-};
-module.exports = {
-  loginRender,
-  loginSubmit,
 };
 
 module.exports = {

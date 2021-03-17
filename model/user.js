@@ -3,11 +3,28 @@ const Joi = require("joi");
 
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
+  lastname: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   role: String,
   token: String,
   tokenExpiration: Date,
+  address: {
+    type: String,
+    require: true,
+  },
+  city: {
+    type: String,
+    require: true,
+  },
+  zipcode: {
+    type: Number,
+    require: true,
+  },
+  phone: {
+    type: Number,
+    require: true,
+  },
   productList: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -53,6 +70,19 @@ function validateLoginForm(user) {
   return schema.validate(user);
 }
 
+function validateCheckoutForm(user) {
+  const schema = Joi.object({
+    name: Joi.string().min(2).max(30).required(),
+    lastname: Joi.string().min(2).max(30).required(),
+    address: Joi.string().min(5).max(255).required(),
+    city: Joi.string().min(5).max(255).required(),
+    zip: Joi.number().min(00001).max(99999).required(),
+    email: Joi.string().min(5).max(255).required().email(),
+    phone: Joi.number().min(0000000001).max(9999999999).required(),
+  });
+  return schema.validate(user);
+}
+
 userSchema.methods.addToCart = function (productId) {
   const foundItem = this.shoppingCart.find(
     (product) => product.productId == productId
@@ -89,7 +119,6 @@ userSchema.methods.removeFromCart = function (productId) {
   this.shoppingCart = this.shoppingCart.filter(
     (product) => product.productId != productId
   );
-
   return this.save();
 };
 
@@ -106,4 +135,5 @@ module.exports = {
   User,
   validateRegisterForm,
   validateLoginForm,
+  validateCheckoutForm,
 };
