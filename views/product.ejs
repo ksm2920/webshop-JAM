@@ -15,6 +15,8 @@
                         <h3 class=> <%= product.name %></h3>
                         <p class=> <%= product.description %></p>
                         <p class=> <%= product.price %> SEK</p>
+                        <p style="font-weight: bold;"id="showContent"><i class="fas fa-plus" onclick="showContent('content')"></i> Content 100 g</p>
+                        <p id="content" class="hidden"><%= product.content %></p>
                         <span class="buyBtn">
                             <input type="submit" value="Buy" class="buybtn">
                         </span>
@@ -24,5 +26,6 @@
         </section >
         <%- include('footer.ejs') %>
     </main>
+    <script src="/javascripts/index.js"></script>
 </body>
 </html>

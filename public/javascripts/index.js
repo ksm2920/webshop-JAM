@@ -5,3 +5,8 @@ function ScrollToBottom(pageIndex){
         window.scrollTo(0, footer.offsetTop);
     }
 }
+
+function showContent(elementId) {
+    let element = document.getElementById(elementId);
+    element.classList.toggle("hidden")
+}
