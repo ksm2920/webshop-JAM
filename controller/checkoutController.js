@@ -1,4 +1,5 @@
 const { User, validateCheckoutForm } = require("../model/user");
+const {loadProducts} = require("../controller/indexController");
 
 const checkoutRender = async (req, res) => {
   res.render("checkout.ejs", {
@@ -11,6 +12,8 @@ const checkoutRender = async (req, res) => {
 const checkoutSubmit = async (req, res) => {
   const { error } = validateCheckoutForm(req.body);
   //console.log(error);
+  const {lastname, address, city, zip, phone} = req.body
+  const checkoutUserId = req.user.user._id;
 
   if (error) {
     return res.render("checkout.ejs", {
@@ -19,14 +22,13 @@ const checkoutSubmit = async (req, res) => {
       user: req.user
     });
   } else {
-    // user.lastname = req.body.lastname;
-    // user.address = req.body.address;
-    // user.city = req.body.city;
-    // user.zip = req.body.zip;
-    // user.phone = req.body.phone;
-    // await user.save();
-
-    return res.redirect("/");
+   await User.findByIdAndUpdate(
+     checkoutUserId,
+     {lastname:lastname, address:address, city:city, zip:zip, phone:phone},
+     () => {
+      res.clearCookie('jwtToken').redirect('/');
+    }
+   )
   }
 };
 
