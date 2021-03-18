@@ -1,9 +1,9 @@
 var express = require("express");
 const { loadProductDetails } = require("../controller/productController");
 var router = express.Router();
-const verifyUser = require("../middleware/verifyUser");
+const getUser = require("../middleware/getUser");
 
 // GET home page.
-router.get("/products/:id", verifyUser, loadProductDetails);
+router.get("/products/:id", getUser, loadProductDetails);
 
 module.exports = router;
