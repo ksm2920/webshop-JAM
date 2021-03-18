@@ -29,7 +29,7 @@ const loadProducts = async (req, res) => {
     const userWithCourseData = await User.findOne({
       _id: req.user.user._id,
     }).populate("shoppingCart.productId");
-    console.log(userWithCourseData);
+    //console.log(userWithCourseData);
 
     res.render("index.ejs", {
       products,

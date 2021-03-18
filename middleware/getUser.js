@@ -6,7 +6,6 @@ const getUser = (req, res, next) => {
 
     if(token) {        
         req.user = jwt.verify(token, process.env.SECRET_KEY);
-        console.log(req.user);
     }
     next();
 }

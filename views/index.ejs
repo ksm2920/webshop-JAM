@@ -6,11 +6,7 @@
   <%- include('header.ejs') %>
         <main>
           <section class="highlighter">
-            <video id="vid" width="100%" controls autoplay muted loop>
-              <source src="/pictures/videos/promo.mp4" type="video/mp4">
-              
-              Your browser does not support the video tag.
-            </video>
+            <img src="/pictures/torfolkgard_produkter_5120_start.jpg" class="heroSection" alt="">
           </section >
           
           <section class="productList">
@@ -32,7 +28,9 @@
                     <a class="imagebox" href="/products/<%= product.id %>"><h5 class="card-title"> <%= product.name %></h5></a>
                     <p class="card-text"> <%= product.price %> SEK</p>
                     <span class="buyBtn">
-                      <input type="submit" value="Buy " class="buybtn">
+                      <form  method="GET" action="/addToCart/<%= product.id %>">
+                        <input type="submit" value="Buy" class="buybtn">
+                    </form>
                     </span>
                     <!-- <a href="/addToCart/<%= product.id %>" class="add-to-cart">
                     <span class="fas fa-shopping-basket"></span>

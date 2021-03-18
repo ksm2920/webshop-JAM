@@ -26,13 +26,13 @@ const addProductFormSubmit = async (req, res) => {
     pathOfImage: pathOfImage,
   });
 
-  console.log(newProduct);
+  //console.log(newProduct);
 
   newProduct.save();
 
   const user = await User.findOne({ _id: req.user.user._id });
 
-  console.log(user);
+  //console.log(user);
 
   user.addProductList(newProduct._id);
   res.redirect("/adminPage");
@@ -42,8 +42,8 @@ const editProductFormSubmit = async (req, res) => {
   const id = req.params.id;
   const { name, description, price, content } = req.body;
 
-  console.log(req.body);
-  console.log(id);
+  //console.log(req.body);
+  //console.log(id);
   await Product.findByIdAndUpdate(
     id,
     { name: name, description: description, price: price, content: content },

@@ -44,7 +44,6 @@ const loginSubmit = async (req, res) => {
       res.cookie("jwtToken", jwtToken, { maxAge: 3600000, httpOnly: true });
       //redirect to shopping cart
       var jwtObjevt = jwt.verify(jwtToken, process.env.SECRET_KEY);
-      console.log(jwtObjevt);
       if (jwtObjevt.user.role) {
         return res.redirect("/adminPage");
       } else {

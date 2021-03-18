@@ -10,7 +10,7 @@ const checkoutRender = async (req, res) => {
 
 const checkoutSubmit = async (req, res) => {
   const { error } = validateCheckoutForm(req.body);
-  console.log(error);
+  //console.log(error);
 
   if (error) {
     return res.render("checkout.ejs", {
