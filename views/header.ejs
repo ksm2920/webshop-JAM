@@ -14,7 +14,7 @@
       </span>
     </button>
     <div class="collapse navbar-collapse navigation" id="navbarTogglerDemo01">
-      <a class="navbar-brand menuColor" id="logo" href="/">JAM</a>
+      <a class="navbar-brand menuColor" id="logo" href="/">JAM'S</a>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0" id="menu-list">
         <li class="nav-item active">
           <a class="nav-link menuColor" href="/"
@@ -46,10 +46,11 @@
           class="btn my-2 my-md-2 myCartBtn"
           data-toggle="modal"
           data-target="#checkoutModal"
+          onclick="$('#checkoutModal').modal({'backdrop': 'static'})"
         >
           
           <i class="fas fa-shopping-bag myCart"></i>
-          <span class="badge badge-danger" id="cartBadge"><%= cartItems? cartItems.length : ''  %> </span>
+          <span class="badge badge-danger count" id="cartBadge"><%= cartItems? cartItems.length : ''  %> </span>
         </button>
         
       </form>

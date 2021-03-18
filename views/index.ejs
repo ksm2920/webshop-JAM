@@ -5,8 +5,8 @@
 <body onload="ScrollToBottom('<%= pageIndex %>')";>
   <%- include('header.ejs') %>
         <main>
-          <section class="highlighter">
-            <img src="/pictures/torfolkgard_produkter_5120_start.jpg" class="heroSection" alt="">
+          <section>
+            <img src="/pictures/torfolkgard_start_cut.png" class="heroSection" alt="">
           </section >
           
           <section class="productList">
@@ -43,7 +43,7 @@
         <% if(pageIndex * pageSize < totalProductCount) { %>
           <% pageIndex += 1 %>
         <div id="bottom"  style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
-            <a class="loadMore"  href="<%= `/?pageIndex=${pageIndex}` %>">Load More</a>
+            <a class="loadMore"  href="<%= `/?pageIndex=${pageIndex}` %>">LOAD MORE</a>
         </div>
       <% } %>
        </section>
