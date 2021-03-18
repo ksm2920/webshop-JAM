@@ -71,6 +71,11 @@ function validateCheckoutForm(user) {
   return schema.validate(user);
 }
 
+userSchema.methods.addProductList = function(productId) {
+  this.productList.push(productId);
+  this.save();
+}
+
 userSchema.methods.addToCart = function (productId) {
   const foundItem = this.shoppingCart.find(
     (product) => product.productId == productId
