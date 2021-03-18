@@ -119,7 +119,7 @@ userSchema.methods.removeProduct = function (productId) {
   this.productList = this.productList.filter(
     (product) => product._id != productId
   );
-  this.save();
+  return this.save();
 };
 
 const User = mongoose.model("user", userSchema);
