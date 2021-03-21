@@ -1,5 +1,5 @@
 const { User } = require("../model/user");
-const Product = require("../model/product");
+const { Product, validateAdminProductForm } = require("../model/product");
 
 const adminProductListRender = async (req, res) => {
   const editId = req.query.editId;
@@ -7,7 +7,7 @@ const adminProductListRender = async (req, res) => {
     "productList"
   );
 
-  console.log(users[0].productList);
+  // console.log(users[0].productList);
 
   const products = users[0].productList;
 
@@ -16,8 +16,26 @@ const adminProductListRender = async (req, res) => {
 
 const addProductFormSubmit = async (req, res) => {
   const { name, description, price, content } = req.body;
-  const pathOfImage = req.file.filename;
+  
+  let pathOfImage = null;
+  if(req.file) {
+    pathOfImage = req.file.filename;
+  }
+  
+  const editId = req.query.editId;
+  const users = await User.find({ _id: req.user.user._id }).populate("productList");
+  const products = users[0].productList;
+  const { error } = validateAdminProductForm(req.body);
 
+  if (error) {
+    return res.render("adminPage.ejs", {
+      error: error.details[0].message,
+      products, 
+      editId, 
+      cartItems: null,
+      user: req.user
+    }); 
+  }
   const newProduct = await new Product({
     name: name,
     description: description,
@@ -26,7 +44,7 @@ const addProductFormSubmit = async (req, res) => {
     pathOfImage: pathOfImage,
   });
 
-  //console.log(newProduct);
+  // console.log(newProduct);
 
   newProduct.save();
 
