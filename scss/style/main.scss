@@ -191,6 +191,13 @@ body {
   height: 100%;
 }
 
+.checkout-card .cart-img > img {
+  @include desktop {
+    width: 50%;
+    heigth: 50%;
+  }
+}
+
 .cartCard .cart-info {
   display: flex;
   flex-direction: column;

@@ -6,12 +6,12 @@
       <h4>1. Your shoppingcart</h4>
       <hr />
       <% if(cartItems) {%> <% cartItems.forEach(item => {%>
-      <div class="row">
+      <div class="row cartCard checkout-card">
         <div class="col-4 col-md-4 col-lg-4 cart-img">
           <img
             src="/uploads/<%= item.productId.pathOfImage %> "
             alt="<%= item.productId.name %>"
-            width="100px"
+            width="60px"
             height="42px"
             class="img-thumbnail"
           />
@@ -25,7 +25,7 @@
             <span>Antal: </span>
           </div>
         </div>
-        <div class="col-4 col-md-4 col-lg-4 cart-quantity">
+        <div class="col-4 col-md-4 col-lg-4 cart-quantity pr-lg-0">
           <a class="btn" href="/removeFromCart/<%= item.productId._id %>">
             <i class="fas fa-trash-alt fa-lg"></i>
           </a>
@@ -34,7 +34,7 @@
               ><button type="button">-</button></a
             >
             <input
-              class="col-4 p-0"
+              class="col-4 col-lg-8 p-0"
               type="number"
               style="width: 100%"
               value="<%= item.quantity %>"
@@ -49,7 +49,7 @@
       <%})%> <% let totalPrice = 0 %> <% for (let i = 0; i < cartItems.length;
       i++) { %> <% totalPrice += cartItems[i].productId.price *
       cartItems[i].quantity; %> <% } %>
-      <h5 class="col-12">Total: <%= totalPrice %></h5>
+      <h5 class="col-12">Total: <%= totalPrice %> SEK</h5>
       <%}%>
       <hr />
       <h4>2. Checkout</h4>
