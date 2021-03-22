@@ -55,7 +55,6 @@ body {
   }
 }
 
-
 .card-title {
   height: 30px;
   width: 195px;
@@ -73,7 +72,7 @@ body {
   -webkit-filter: drop-shadow(5px 5px 5px rgb(59, 59, 59));
   filter: drop-shadow(5px 5px 5px rgb(59, 59, 59));
   @include desktop {
-    width:200px;
+    width: 200px;
   }
 }
 .imagebox {
@@ -121,7 +120,7 @@ body {
   // box-shadow: 0 20px 20px rgba(240, 113, 40, 0.2), 0px 0px 50px rgba(240, 113, 40, 0.2);
   font-size: 15px;
   border: 1px solid rgb(70, 37, 24);
-  padding:10px 30px;
+  padding: 10px 30px;
   &:hover {
     // background-color: rgb(70, 37, 24);
     // color: white;
@@ -210,10 +209,15 @@ body {
   justify-content: space-between;
   align-items: flex-end;
 }
+
+.total-price {
+  display: flex;
+  justify-content: flex-start;
+}
 .hidden {
   display: none;
 }
-.heroSection{
+.heroSection {
   // height: 600px;
   width: 100%;
 }

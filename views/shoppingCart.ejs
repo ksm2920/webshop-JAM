@@ -67,8 +67,12 @@
         </div>
         <% } %>
       </div>
-      <div class="modal-footer">
-        <h5 class="col-12">Total:</h5>
+      <div class="modal-footer col-12">
+        <% if(cartItems) {%> <% let totalPrice = 0 %> <% for (let i = 0; i <
+        cartItems.length; i++) { %> <% totalPrice +=
+        cartItems[i].productId.price * cartItems[i].quantity; %> <% } %>
+        <h5 class="col-12">Total: <%= totalPrice %></h5>
+        <% } %>
         <a class="btn btn-dark col-12" href="/checkout"> Checkout </a>
       </div>
     </div>
