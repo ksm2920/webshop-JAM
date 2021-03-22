@@ -3,8 +3,53 @@
   <%- include('head.ejs') %>
   <body>
     <%- include('header.ejs') %>
-    <h5>1. Your shoppingcart</h5>
-    <h5>2. Checkout</h5>
+    <h4>1. Your shoppingcart</h4>
+    <hr />
+    <% if(cartItems) {%> <% cartItems.forEach(item => {%>
+    <div class="container">
+      <div class="row">
+        <div class="col-4 col-md-4 col-lg-4 cart-img">
+          <img
+            src="/uploads/<%= item.productId.pathOfImage %> "
+            alt="<%= item.productId.name %>"
+            width="100px"
+            height="42px"
+            class="img-thumbnail"
+          />
+        </div>
+        <div class="col-4 col-md-4 col-lg-4 cart-info">
+          <div class="pricing">
+            <span><strong><%= item.productId.name%></strong></span>
+            <span><%= item.productId.price %> kr</span>
+          </div>
+          <div>
+            <span>Antal: </span>
+          </div>
+        </div>
+        <div class="col-4 col-md-4 col-lg-4 cart-quantity">
+          <a class="btn" href="/removeFromCart/<%= item.productId._id %>">
+            <i class="fas fa-trash-alt fa-lg"></i>
+          </a>
+          <div class="change-quantity">
+            <a href="/decreaseQuantity/<%= item.productId._id %>"
+              ><button type="button">-</button></a
+            >
+            <input
+              class="col-4 p-0"
+              type="number"
+              style="width: 100%"
+              value="<%= item.quantity %>"
+            />
+            <a href="/addToCart/<%= item.productId._id %>"
+              ><button type="button">+</button></a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <%})%> <%}%>
+    <h4>2. Checkout</h4>
     <form action="/checkout" method="post" class="col-12 col-lg-6">
       <div class="form-row">
         <div class="form-group col-6 col-md-6">
