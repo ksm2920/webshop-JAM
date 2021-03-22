@@ -18,14 +18,19 @@ const checkoutRender = async (req, res) => {
 
 const checkoutSubmit = async (req, res) => {
   const { error } = validateCheckoutForm(req.body);
-  //console.log(error);
+
+  const userWithCourseData = await User.findOne({
+    _id: req.user.user._id,
+  }).populate("shoppingCart.productId");
+  console.log(userWithCourseData.shoppingCart);
+
   const { lastname, address, city, zip, phone } = req.body;
   const checkoutUserId = req.user.user._id;
 
   if (error) {
     return res.render("checkout.ejs", {
       error: error.details[0].message,
-      cartItems: null,
+      cartItems: userWithCourseData.shoppingCart,
       user: req.user,
     });
   } else {
