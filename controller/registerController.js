@@ -12,7 +12,7 @@ const registerSubmit = async (req, res) => {
   if (error) {
     return res.render("register.ejs", { error: error.details[0].message, cartItems:null });
   }
-  const { firstname, lastname, email, password } = req.body;
+  const { firstname, lastname, email, password, role } = req.body;
 
   const existingEmail = await User.findOne({ email: email });
 
@@ -31,6 +31,7 @@ const registerSubmit = async (req, res) => {
     lastname: lastname,
     email: email,
     password: hashedPassword,
+    role: role
   });
 
   newUser.save();
