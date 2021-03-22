@@ -1,0 +1,10 @@
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+  let stripe = Stripe(
+    "pk_test_51ILlmgA3qfjZPIO38ZbBAGTiPE5yRYY1wqkQo6ZtDXqnx16LbHijKGlLAVifA8ZsGLsczmWhm43lmdVuaZ9dNqa800MZWGZrxX"
+  );
+
+  document.addEventListener("DOMContentLoaded", () => {
+    stripe.redirectToCheckout({ sessionId: "<%= sessionId %>" });
+  });
+</script>

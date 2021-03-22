@@ -209,6 +209,11 @@ body {
   justify-content: space-between;
   align-items: flex-end;
 }
+
+.total-price {
+  display: flex;
+  justify-content: flex-start;
+}
 .hidden {
   display: none;
 }

@@ -6,7 +6,6 @@
     <h4>1. Your shoppingcart</h4>
     <hr />
     <% if(cartItems) {%> <% cartItems.forEach(item => {%>
-    <div class="container">
       <div class="row">
         <div class="col-4 col-md-4 col-lg-4 cart-img">
           <img
@@ -48,7 +47,10 @@
       </div>
     </div>
     <hr />
-    <%})%> <%}%>
+    <%})%> <%}%> <% let totalPrice = 0 %> <% for (let i = 0; i <
+    cartItems.length; i++) { %> <% totalPrice += cartItems[i].productId.price *
+    cartItems[i].quantity; %> <% } %>
+    <h5 class="col-12">Total: <%= totalPrice %></h5>
     <h4>2. Checkout</h4>
     <form action="/checkout" method="post" class="col-12 col-lg-6">
       <div class="form-row">
@@ -60,6 +62,7 @@
             name="name"
             id="inputFirstname"
             value="<%= user.user.name %>"
+            placeholder="Jane"
           />
         </div>
         <div class="form-group col-6 col-md-6">
@@ -69,7 +72,7 @@
             class="form-control"
             name="lastname"
             id="inputLastname"
-            placeholder="Lastname"
+            placeholder="Doe"
           />
         </div>
       </div>
@@ -114,7 +117,8 @@
           class="form-control"
           name="email"
           id="inputEmail"
-          placeholder="<%= user.user.email %>"
+          value="<%= user.user.email %>"
+          placeholder="example@hi.com"
         />
       </div>
       <div class="form-group">
