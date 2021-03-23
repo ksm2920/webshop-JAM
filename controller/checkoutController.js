@@ -8,13 +8,15 @@ const nodemailer = require('nodemailer');
 const nodemailerSmtpTransport = require("nodemailer-smtp-transport");
 
 
-const transport = nodemailer.createTransport( 
-  nodemailerSmtpTransport({ service: "gmail",
-  auth:{
-    user: process.env.EMAIL_SENDER,
-    pass: process.env.EMAIL_SENDER_PWD
-  }
-}))
+const transport = nodemailer.createTransport({
+  host: "smtp.zoho.eu",
+  port: 465,
+  secure: true,
+  auth: {
+    user: process.env.TRANSPORT_MAIL,
+    pass: process.env.MAIL_PASS,
+  },
+})
 
 const checkoutRender = async (req, res) => {
   const userWithCourseData = await User.findOne({
@@ -94,12 +96,13 @@ const payment = async (req, res) => {
 
 const shoppingSuccess = async (req, res) => {
   const user = await User.findOne({ _id: req.user.user._id });
+  console.log(user);
   user.shoppingCart = [];
   user.save();
 
     await transport.sendMail({
-          from: "deblina4.se@gmail.com",
-          to: "ksm2920@gmail.com", // Change to your recipient
+          from: process.env.TRANSPORT_MAIL,
+          to: user.email, // Change to your recipient
         // Change to your verified sender
           subject: 'Webshop - Order confirmation',
         
