@@ -5,20 +5,22 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const loginRender = (req, res) => {
-  res.render("login.ejs", { error: "", cartItems: null });
+  res.render("login.ejs", { error: "", cartItems: [], returnUrl: req.originalUrl });
 };
 
 const loginSubmit = async (req, res) => {
   const { error } = validateLoginForm(req.body);
 
+  const { email, password, returnUrl } = req.body;
+  
   if (error) {
     return res.render("login.ejs", {
       error: error.details[0].message,
-      cartItems: null,
+      cartItems: [],
+      returnUrl
     });
   }
 
-  const { email, password } = req.body;
 
   try {
     const user = await User.findOne({ email: email });
@@ -26,7 +28,7 @@ const loginSubmit = async (req, res) => {
     if (!user) {
       return res.render("register.ejs", {
         error: "You don't have an account. Please sign up",
-        cartItems: null,
+        cartItems: [],
       });
     }
 
@@ -35,7 +37,8 @@ const loginSubmit = async (req, res) => {
     if (!validUser) {
       return res.render("login.ejs", {
         error: "Wrong password",
-        cartItems: null,
+        cartItems: [],
+        returnUrl
       });
     }
 
@@ -47,14 +50,15 @@ const loginSubmit = async (req, res) => {
       if (jwtObjevt.user.role == "admin") {
         return res.redirect("/adminPage");
       } else {
-        res.redirect("/");
+        //console.log(returnUrl);
+        res.redirect(returnUrl);
       }
     }
 
     //redirect to shopping cart
     return res.send("Error, how did u get here");
   } catch (err) {
-    return res.render("login.ejs", { error: "System error" + err });
+    return res.render("login.ejs", { error: "System error" + err, cartItems: [], returnUrl });
   }
 };
 

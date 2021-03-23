@@ -1,11 +1,20 @@
 require("dotenv").config();
 const { User, validateCheckoutForm } = require("../model/user");
+const { v4 } = require("uuid");
 
 require("dotenv").config();
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const {loadProducts} = require("../controller/indexController");
 const nodemailer = require('nodemailer');
 const nodemailerSmtpTransport = require("nodemailer-smtp-transport");
+
+const getTotal = (cartItems) => {
+  let totalPrice = 0;
+  for(let i=0; i < cartItems.length; i++){
+    totalPrice += cartItems[i].productId.price * cartItems[i].quantity;
+  }
+  return totalPrice;
+}
 
 
 const transport = nodemailer.createTransport({
@@ -19,10 +28,11 @@ const transport = nodemailer.createTransport({
 })
 
 const checkoutRender = async (req, res) => {
+  console.log("Verified");
   const userWithCourseData = await User.findOne({
     _id: req.user.user._id,
   }).populate("shoppingCart.productId");
-  console.log(userWithCourseData.shoppingCart);
+  //console.log(userWithCourseData.shoppingCart);
 
   res.render("checkout.ejs", {
     error: "",
@@ -58,7 +68,7 @@ const checkoutSubmit = async (req, res) => {
         address: address,
         city: city,
         zip: zip,
-        phone: phone,
+        phone: phone
       },
       () => {
         res.redirect("/payment");
@@ -96,8 +106,13 @@ const payment = async (req, res) => {
 
 const shoppingSuccess = async (req, res) => {
   const user = await User.findOne({ _id: req.user.user._id });
+  const userWithCourseData = await User.findOne({
+    _id: req.user.user._id,
+  }).populate("shoppingCart.productId");
   console.log(user);
   user.shoppingCart = [];
+  user.orderNo = v4();
+  user.orderItems = userWithCourseData.shoppingCart;
   user.save();
 
     await transport.sendMail({
@@ -106,7 +121,9 @@ const shoppingSuccess = async (req, res) => {
         // Change to your verified sender
           subject: 'Webshop - Order confirmation',
         
-          html: `<h1> Thank you for shopping with us! </h1>`,
+          html: `<h1> Thank you for shopping with us! </h1>
+                  <h3>Your Order No is ${user.orderNo}</h3>
+                  <h3>You purchase amount is ${getTotal(userWithCourseData.shoppingCart)}</h3>`,
       }, function(err, info){
           if (err ){
             console.log(err);
@@ -116,7 +133,7 @@ const shoppingSuccess = async (req, res) => {
           }
       });
 
-  res.send("Din varukorg är tom. Vi skickar din beställning inom 3 dagar");
+      res.render("shoppingcartSucess.ejs", {cartItems: []});
 
 
 };

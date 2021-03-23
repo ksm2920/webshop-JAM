@@ -55,7 +55,7 @@
         <% if(pageIndex * pageSize < totalProductCount) { %>
           
         <div id="bottom"  style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
-            <input type="submit" class="loadMore" onclick="loadMore(<%= pageIndex %>)" value="LOAD MORE"></input>
+            <a class="loadMore" onclick="loadMore(<%= pageIndex %>)">LOAD MORE</a>
         </div>
       <% } %>
       

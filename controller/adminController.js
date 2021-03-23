@@ -9,7 +9,7 @@ const adminProductListRender = async (req, res) => {
 
   const products = users[0].productList;
 
-  res.render("adminPage.ejs", { products, editId, error: "", cartItems: null, user: req.user });
+  res.render("adminPage.ejs", { products, editId, error: "", cartItems: [], user: req.user });
 };
 
 const addProductFormSubmit = async (req, res) => {
@@ -20,7 +20,7 @@ const addProductFormSubmit = async (req, res) => {
   const products = users[0].productList;
   
   if(pathOfImage == undefined) {
-    res.render("adminPage.ejs", { products, editId, error: "Choose a image file to upload", cartItems: null, user: req.user });
+    res.render("adminPage.ejs", { products, editId, error: "Choose a image file to upload", cartItems: [], user: req.user });
   }
 
   const { error } = validateAdminProductForm(req.body);
@@ -30,7 +30,7 @@ const addProductFormSubmit = async (req, res) => {
       error: error.details[0].message,
       products, 
       editId, 
-      cartItems: null,
+      cartItems: [],
       user: req.user
     }); 
   }
@@ -44,7 +44,7 @@ const addProductFormSubmit = async (req, res) => {
   });
 
 
-  console.log(newProduct);
+  //console.log(newProduct);
   newProduct.save();
 
   const user = await User.findOne({ _id: req.user.user._id });
