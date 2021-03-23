@@ -12,7 +12,7 @@ const registerSubmit = async (req, res) => {
   if (error) {
     return res.render("register.ejs", { error: error.details[0].message, cartItems:null });
   }
-  const { name, email, password } = req.body;
+  const { firstname, lastname, email, password, role } = req.body;
 
   const existingEmail = await User.findOne({ email: email });
 
@@ -27,9 +27,11 @@ const registerSubmit = async (req, res) => {
   const hashedPassword = await bcrypt.hash(password, salt);
 
   const newUser = new User({
-    name: name,
+    firstname: firstname,
+    lastname: lastname,
     email: email,
     password: hashedPassword,
+    role: role
   });
 
   newUser.save();

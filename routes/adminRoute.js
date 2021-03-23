@@ -23,11 +23,7 @@ var upload = multer({ storage: storage });
 
 router.get("/adminPage", verifyAdmin, adminProductListRender);
 
-router.post(
-  "/adminPage",
-  [verifyAdmin, upload.single("image")],
-  addProductFormSubmit
-);
+router.post("/adminPage", [verifyAdmin, upload.single("image")], addProductFormSubmit);
 
 router.post("/edit/:id", verifyAdmin, editProductFormSubmit);
 

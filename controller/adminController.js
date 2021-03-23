@@ -1,13 +1,11 @@
 const { User } = require("../model/user");
-const Product = require("../model/product");
+const { Product, validateAdminProductForm } = require("../model/product");
 
 const adminProductListRender = async (req, res) => {
   const editId = req.query.editId;
   const users = await User.find({ _id: req.user.user._id }).populate(
     "productList"
   );
-
-  console.log(users[0].productList);
 
   const products = users[0].productList;
 
@@ -16,18 +14,37 @@ const adminProductListRender = async (req, res) => {
 
 const addProductFormSubmit = async (req, res) => {
   const { name, description, price, content } = req.body;
-  const pathOfImage = req.file.filename;
+  let pathOfImage = req.file
+  const editId = req.query.editId;
+  const users = await User.find({ _id: req.user.user._id }).populate("productList");
+  const products = users[0].productList;
+  
+  if(pathOfImage == undefined) {
+    res.render("adminPage.ejs", { products, editId, error: "Choose a image file to upload", cartItems: null, user: req.user });
+  }
+
+  const { error } = validateAdminProductForm(req.body);
+
+  if (error) {
+    return res.render("adminPage.ejs", {
+      error: error.details[0].message,
+      products, 
+      editId, 
+      cartItems: null,
+      user: req.user
+    }); 
+  }
 
   const newProduct = await new Product({
     name: name,
     description: description,
     price: price,
     content: content,
-    pathOfImage: pathOfImage,
+    pathOfImage: req.file.filename
   });
 
-  //console.log(newProduct);
 
+  console.log(newProduct);
   newProduct.save();
 
   const user = await User.findOne({ _id: req.user.user._id });
@@ -42,8 +59,6 @@ const editProductFormSubmit = async (req, res) => {
   const id = req.params.id;
   const { name, description, price, content } = req.body;
 
-  //console.log(req.body);
-  //console.log(id);
   await Product.findByIdAndUpdate(
     id,
     { name: name, description: description, price: price, content: content },

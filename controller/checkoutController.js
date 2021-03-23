@@ -1,7 +1,6 @@
 require("dotenv").config();
 const { User, validateCheckoutForm } = require("../model/user");
 
-const { loadProducts } = require("../controller/indexController");
 require("dotenv").config();
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const {loadProducts} = require("../controller/indexController");
@@ -9,13 +8,15 @@ const nodemailer = require('nodemailer');
 const nodemailerSmtpTransport = require("nodemailer-smtp-transport");
 
 
-const transport = nodemailer.createTransport( 
-  nodemailerSmtpTransport({ service: "gmail",
-  auth:{
-    user: process.env.EMAIL_SENDER,
-    pass: process.env.EMAIL_SENDER_PWD
-  }
-}))
+const transport = nodemailer.createTransport({
+  host: "smtp.zoho.eu",
+  port: 465,
+  secure: true,
+  auth: {
+    user: process.env.TRANSPORT_MAIL,
+    pass: process.env.MAIL_PASS,
+  },
+})
 
 const checkoutRender = async (req, res) => {
   const userWithCourseData = await User.findOne({
@@ -63,24 +64,8 @@ const checkoutSubmit = async (req, res) => {
         res.redirect("/payment");
       }
     );
-      await transport.sendMail({
-          from: "deblina4.se@gmail.com",
-          to: email, // Change to your recipient
-        // Change to your verified sender
-          subject: 'Webshop - Order confirmation',
-        
-          html: `<h1> Thank you for shopping with us! </h1>`,
-      }, function(err, info){
-          if (err ){
-            console.log(err);
-          }
-          else {
-            console.log('Message sent: ' + info.response);
-          }
-      });
     }
   }
-};
 
 const payment = async (req, res) => {
   const userWithCourseData = await User.findOne({
@@ -111,10 +96,29 @@ const payment = async (req, res) => {
 
 const shoppingSuccess = async (req, res) => {
   const user = await User.findOne({ _id: req.user.user._id });
+  console.log(user);
   user.shoppingCart = [];
   user.save();
 
+    await transport.sendMail({
+          from: process.env.TRANSPORT_MAIL,
+          to: user.email, // Change to your recipient
+        // Change to your verified sender
+          subject: 'Webshop - Order confirmation',
+        
+          html: `<h1> Thank you for shopping with us! </h1>`,
+      }, function(err, info){
+          if (err ){
+            console.log(err);
+          }
+          else {
+            console.log('Message sent: ' + info.response);
+          }
+      });
+
   res.send("Din varukorg är tom. Vi skickar din beställning inom 3 dagar");
+
+
 };
 
 module.exports = {
