@@ -10,7 +10,7 @@
           </section >
           
           <section class="productList">
-            
+            <form name="form_productList" id="form_productList">
             <div class="container">
               <p class= "about">Ipsam quisquam facilis similique incidunt ducimus. LorLorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, placeat. In, rem! Iste, quisquam optio molestias doloribus hic reiciendis esse eveniet dicta harum.
                 Ipsam quisquam facilis similique incidunt ducimus. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, placeat. In, rem! Iste, quisquam optio molestias doloribus hic reiciendis esse eveniet dicta harum. 
@@ -20,6 +20,18 @@
                 Ipsam quisquam facilis similique incidunt ducimus. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, placeat. In, rem! Iste, quisquam optio molestias doloribus hic reiciendis esse eveniet dicta harum. 
               </p>
               <h3 class="PrdList">Our product</h3>
+              
+                <label for="cars">Sort by:</label>
+                <select name="sortedBy" id="sortedBy" onchange="this.form.submit()">
+                  
+                  <% sortingParams.forEach(param => { %>
+                    <option value="<%= param.value %>" <%= sortedBy == param.value ? "selected": "" %>><%= param.name %></option>
+                  <% }) %>
+                </select>
+                <!--<input type="text" id="searchText" name="searchText">
+                <input type="submit" value="Search">
+                <br><br>-->
+                <input type="hidden" id="pageIndex" name="pageIndex" value="<%= pageIndex %>">
               <div class="row">
                 <% products.forEach(product => { %>
                 <div class="card col-6 col-md-4 col-lg-3 minicard" id="space-btw" style="width: 18rem;">
@@ -41,11 +53,13 @@
               </div> 
         </div>
         <% if(pageIndex * pageSize < totalProductCount) { %>
-          <% pageIndex += 1 %>
+          
         <div id="bottom"  style="text-align: center; margin-top: 30px; margin-bottom: 30px;">
-            <a class="loadMore"  href="<%= `/?pageIndex=${pageIndex}` %>">LOAD MORE</a>
+            <input type="submit" class="loadMore" onclick="loadMore(<%= pageIndex %>)" value="LOAD MORE"></input>
         </div>
       <% } %>
+      
+    </form>
        </section>
        <%- include('footer.ejs') %>
       </main>
