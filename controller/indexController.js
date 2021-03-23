@@ -27,7 +27,7 @@ const sortingParams = [
 
 const loadProducts = async (req, res) => {
   const hidVal = req.body.hidVal;
-  console.log(hidVal);
+  //console.log(hidVal);
   let sortedBy = "price";
   let searchText = "";
   let qParams = [];
@@ -36,7 +36,7 @@ const loadProducts = async (req, res) => {
   try {
     
     
-    console.log(req.originalUrl);
+    //console.log(req.originalUrl);
     if (req.query.searchText){
       searchText = req.query.searchText;
       qParams.push({name: "searchText", value: searchText});
