@@ -31,15 +31,15 @@
         data-target="#checkoutModal"
         onclick="$('#checkoutModal').modal({'backdrop': 'static'})"
         >
-        <% let quantity = 0 %>
-        <% if(cartItems !== null && cartItems !== undefined) { %>
-          <% cartItems.forEach(item => { %>
-          <% quantity += Number.parseInt(item.quantity) %>
-        <% })} %>
-        <i class="fas fa-shopping-bag myCart"></i>
-        <% if(cartItems && cartItems.length > 0) { %>
-        <span class="badge badge-danger count" id="cartBadge"><%= cartItems? quantity : ''  %> </span>
-        <% } %>
+          <% let quantity = 0 %>
+          <% if(cartItems !== null && cartItems !== undefined) { %>
+            <% cartItems.forEach(item => { %>
+            <% quantity += Number.parseInt(item.quantity) %>
+          <% })} %>
+          <i class="fas fa-shopping-bag myCart"></i>
+          <% if(cartItems && cartItems.length > 0) { %>
+          <span class="badge badge-danger count" id="cartBadge"><%= cartItems? quantity : ''  %> </span>
+          <% } %>
         </button>
       </form>
       </div>
