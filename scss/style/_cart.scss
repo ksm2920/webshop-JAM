@@ -1,0 +1,23 @@
+.cartCard .cart-img > img {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .cartCard .cart-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .cartCard .cart-info .pricing {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .cartCard .cart-quantity {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+  }

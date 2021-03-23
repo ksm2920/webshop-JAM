@@ -3,9 +3,6 @@
     a:hover {
         color: orange;
     }
-    @include desktop {
-      
-    }
 }
 
 #logo {
@@ -72,16 +69,22 @@
             color:orange;
         } 
     }
+    @include tablet {
+        position: absolute;
+        right:7%
+    }
     @include desktop {
-        position:absolute;
         right: 2%;
     }
 }
 
 #cart-section {
     right: 2%;
+    @include tablet {
+        position: absolute;
+        right:3%
+    }
     @include desktop {
-        position:absolute;
         right: 0%;
     }
 }
