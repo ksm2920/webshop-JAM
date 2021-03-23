@@ -1,7 +1,6 @@
 require("dotenv").config();
 const { User, validateCheckoutForm } = require("../model/user");
 
-const { loadProducts } = require("../controller/indexController");
 require("dotenv").config();
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const {loadProducts} = require("../controller/indexController");
@@ -80,7 +79,6 @@ const checkoutSubmit = async (req, res) => {
       });
     }
   }
-};
 
 const payment = async (req, res) => {
   const userWithCourseData = await User.findOne({
