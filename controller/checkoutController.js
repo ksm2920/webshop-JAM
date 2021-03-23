@@ -62,21 +62,6 @@ const checkoutSubmit = async (req, res) => {
         res.redirect("/payment");
       }
     );
-      await transport.sendMail({
-          from: "deblina4.se@gmail.com",
-          to: email, // Change to your recipient
-        // Change to your verified sender
-          subject: 'Webshop - Order confirmation',
-        
-          html: `<h1> Thank you for shopping with us! </h1>`,
-      }, function(err, info){
-          if (err ){
-            console.log(err);
-          }
-          else {
-            console.log('Message sent: ' + info.response);
-          }
-      });
     }
   }
 
@@ -112,7 +97,25 @@ const shoppingSuccess = async (req, res) => {
   user.shoppingCart = [];
   user.save();
 
+    await transport.sendMail({
+          from: "deblina4.se@gmail.com",
+          to: "ksm2920@gmail.com", // Change to your recipient
+        // Change to your verified sender
+          subject: 'Webshop - Order confirmation',
+        
+          html: `<h1> Thank you for shopping with us! </h1>`,
+      }, function(err, info){
+          if (err ){
+            console.log(err);
+          }
+          else {
+            console.log('Message sent: ' + info.response);
+          }
+      });
+
   res.send("Din varukorg är tom. Vi skickar din beställning inom 3 dagar");
+
+
 };
 
 module.exports = {
