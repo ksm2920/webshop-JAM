@@ -7,8 +7,6 @@ const adminProductListRender = async (req, res) => {
     "productList"
   );
 
-  // console.log(users[0].productList);
-
   const products = users[0].productList;
 
   res.render("adminPage.ejs", { products, editId, error: "", cartItems: null, user: req.user });
@@ -21,6 +19,8 @@ const addProductFormSubmit = async (req, res) => {
   if(req.file) {
     pathOfImage = req.file.filename;
   }
+
+  console.log(pathOfImage);
   
   const editId = req.query.editId;
   const users = await User.find({ _id: req.user.user._id }).populate("productList");
@@ -44,8 +44,7 @@ const addProductFormSubmit = async (req, res) => {
     pathOfImage: pathOfImage,
   });
 
-  // console.log(newProduct);
-
+  console.log(newProduct);
   newProduct.save();
 
   const user = await User.findOne({ _id: req.user.user._id });
@@ -60,8 +59,6 @@ const editProductFormSubmit = async (req, res) => {
   const id = req.params.id;
   const { name, description, price, content } = req.body;
 
-  //console.log(req.body);
-  //console.log(id);
   await Product.findByIdAndUpdate(
     id,
     { name: name, description: description, price: price, content: content },
