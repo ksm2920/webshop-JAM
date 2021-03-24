@@ -21,3 +21,10 @@
     justify-content: space-between;
     align-items: flex-end;
   }
+
+  #thumbnail {
+      padding: 0.5rem ;
+      @include desktop {
+        padding: 2.5rem;
+      }
+  }
