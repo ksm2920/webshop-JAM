@@ -7,7 +7,7 @@
       <hr />
       <% if(cartItems) {%> <% cartItems.forEach(item => {%>
       <div class="row cartCard checkout-card">
-        <div class="col-4 col-md-4 col-lg-4 cart-img">
+        <div class="col-4 col-md-4 col-lg-4 cart-img checkout-img">
           <img
             src="/uploads/<%= item.productId.pathOfImage %> "
             alt="<%= item.productId.name %>"

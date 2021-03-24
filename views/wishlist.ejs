@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('head.ejs') %>
+  <body>
+    <%- include('header.ejs') %>
+    <div class="hero-image">
+      <div class="hero-text">
+        <h1>WISHLIST</h1>
+      </div>
+    </div>
+    <main>
+      <% if(wishlist) {%>
+      <div class="container">
+        <div class="row">
+          <% wishlist.forEach (product => { %>
+          <div class="card col-10 col-md-4 col-lg-4 wishlist-list">
+            <div class="card-body">
+              <div class="product-img">
+                <img
+                  src="/uploads/<%= product.productId.pathOfImage %>"
+                  alt="can not find an image"
+                  height="150px"
+                />
+              </div>
+              <div class="product-detail-wishlist">
+                <a href="/removeFromWishlist/<%= product.productId._id %>"
+                  ><span class="fas fa-trash"></span
+                ></a>
+                <h5 style="font-weight: bold"><%= product.productId.name %></h5>
+                <p><%= product.productId.description %></p>
+                <p style="font-weight: bold" class="mt-auto">
+                  <%= product.productId.price %> SEK
+                </p>
+              </div>
+              <a href="/addToCart/<%= product.productId._id %> ">
+                <button class="buybtn-wishlist">ADD TO CART</button></a
+              >
+            </div>
+          </div>
+          <%}) %> <% } if(!wishlist || wishlist.length == 0) {%>
+          <div class="row"><h2>Din önskelista är tom</h2></div>
+          <% }%>
+        </div>
+      </div>
+      <%- include('footer.ejs') %>
+    </main>
+  </body>
+</html>
