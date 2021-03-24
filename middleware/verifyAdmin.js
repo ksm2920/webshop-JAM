@@ -5,6 +5,7 @@ const verifyAdmin = (req, res, next) => {
     const token = req.cookies.jwtToken;
     
     if(!token) {
+        console.log("bbbbbb")
         return res.render('login.ejs', {error:"You must log in!", cartItems: [], returnUrl: req.originalUrl});
     }
     
