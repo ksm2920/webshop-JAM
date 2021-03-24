@@ -10,8 +10,7 @@ const verifyAdmin = (req, res, next) => {
     
     const validUser = jwt.verify(token, process.env.SECRET_KEY)
     
-    if(!validUser.user.role) {
-        console.log("not authorized")
+    if(validUser.user.role == "customer") {
         return res.send({error:"You don't have authorization to do this."});
     }
     

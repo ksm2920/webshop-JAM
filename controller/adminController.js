@@ -34,6 +34,10 @@ const addProductFormSubmit = async (req, res) => {
       user: req.user
     }); 
   }
+  
+  if(pathOfImage == undefined) {
+    res.render("adminPage.ejs", { products, editId, error: "Choose a image file to upload", cartItems: null, user: req.user });
+  }
 
   const newProduct = await new Product({
     name: name,
