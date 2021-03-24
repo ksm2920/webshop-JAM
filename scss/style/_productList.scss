@@ -17,14 +17,7 @@
 .minicard {
     border: none;
     background-color: transparent;
-    margin-top: 15vh;
-    margin-bottom: 5vh;
-    align-items: center;
-    text-align: center;
-}
-
-.PrdList {
-    margin-top: 50px;
+    margin-top: 10vh;
     align-items: center;
     text-align: center;
 }
@@ -71,3 +64,10 @@
 .plus-btn {
     cursor: pointer;
 }
+
+
+#showBtn {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  

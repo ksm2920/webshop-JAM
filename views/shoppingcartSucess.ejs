@@ -3,12 +3,14 @@
 <%- include('head.ejs') %>
 <body>
     <%- include('header.ejs') %>
-    <div >
-        <h1 style="margin-top:180px; text-align: center;">Thank you for shopping with us!</h1>
-        <h2 style="margin-bottom:180px; text-align: center;">You will get the delivery within 3 days.</h2>
-    </div> 
-    <div>
-     <%- include('footer.ejs') %>
-    </div>  
+    <main>
+        <section class="success-body">
+            <div>
+                <h1 >Thank you for shopping with us!</h1>
+                <h2 >You will get the delivery within 3 days.</h2>
+            </div>
+        </section> 
+        <%- include('footer.ejs') %> 
+    </main>
 </body>
 </html>

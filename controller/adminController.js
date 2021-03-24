@@ -18,10 +18,6 @@ const addProductFormSubmit = async (req, res) => {
   const editId = req.query.editId;
   const users = await User.find({ _id: req.user.user._id }).populate("productList");
   const products = users[0].productList;
-  
-  if(pathOfImage == undefined) {
-    res.render("adminPage.ejs", { products, editId, error: "Choose a image file to upload", cartItems: [], user: req.user });
-  }
 
   const { error } = validateAdminProductForm(req.body);
 
@@ -33,6 +29,10 @@ const addProductFormSubmit = async (req, res) => {
       cartItems: [],
       user: req.user
     }); 
+  }
+    
+  if(pathOfImage == undefined) {
+    res.render("adminPage.ejs", { products, editId, error: "Choose a image file to upload", cartItems: null, user: req.user });
   }
 
   const newProduct = await new Product({

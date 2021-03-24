@@ -10,7 +10,7 @@
           </section >
           
           <section class="productList">
-            <form name="form_productList" id="form_productList">
+            <div name="form_productList" id="form_productList">
             <div class="container">
               <p class= "about">Ipsam quisquam facilis similique incidunt ducimus. LorLorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, placeat. In, rem! Iste, quisquam optio molestias doloribus hic reiciendis esse eveniet dicta harum.
                 Ipsam quisquam facilis similique incidunt ducimus. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, placeat. In, rem! Iste, quisquam optio molestias doloribus hic reiciendis esse eveniet dicta harum. 
@@ -19,15 +19,16 @@
                 Ipsam quisquam facilis similique incidunt ducimus. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, placeat. In, rem! Iste, quisquam optio molestias doloribus hic reiciendis esse eveniet dicta harum. 
                 Ipsam quisquam facilis similique incidunt ducimus. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia, placeat. In, rem! Iste, quisquam optio molestias doloribus hic reiciendis esse eveniet dicta harum. 
               </p>
-              <h3 class="PrdList">Our product</h3>
-              
-                <label for="cars">Sort by:</label>
+              <h3 class="PrdList" id="ourProduct">Our product</h3>
+              <div class="sort">
+                <label for="cars">Sort by : </label>
                 <select name="sortedBy" id="sortedBy" onchange="this.form.submit()">
                   
                   <% sortingParams.forEach(param => { %>
                     <option value="<%= param.value %>" <%= sortedBy == param.value ? "selected": "" %>><%= param.name %></option>
                   <% }) %>
                 </select>
+              </div>
                 <!--<input type="text" id="searchText" name="searchText">
                 <input type="submit" value="Search">
                 <br><br>-->
@@ -60,7 +61,7 @@
         </div>
       <% } %>
       
-    </form>
+      </div>
        </section>
        <%- include('footer.ejs') %>
       </main>
