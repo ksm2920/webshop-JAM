@@ -5,19 +5,18 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const loginRender = (req, res) => {
-  res.render("login.ejs", { error: "", cartItems: [], returnUrl: req.originalUrl });
+  res.render("login.ejs", { error: "", cartItems: [] });
 };
 
 const loginSubmit = async (req, res) => {
   const { error } = validateLoginForm(req.body);
 
-  const { email, password, returnUrl } = req.body;
+  const { email, password } = req.body;
   
   if (error) {
     return res.render("login.ejs", {
       error: error.details[0].message,
-      cartItems: [],
-      returnUrl
+      cartItems: []
     });
   }
 
@@ -37,8 +36,7 @@ const loginSubmit = async (req, res) => {
     if (!validUser) {
       return res.render("login.ejs", {
         error: "Wrong password",
-        cartItems: [],
-        returnUrl
+        cartItems: []
       });
     }
 
@@ -50,15 +48,14 @@ const loginSubmit = async (req, res) => {
       if (jwtObjevt.user.role == "admin") {
         return res.redirect("/adminPage");
       } else {
-        //console.log(returnUrl);
-        res.redirect(returnUrl);
+        res.redirect("/");
       }
     }
 
     //redirect to shopping cart
     return res.send("Error, how did u get here");
   } catch (err) {
-    return res.render("login.ejs", { error: "System error" + err, cartItems: [], returnUrl });
+    return res.render("login.ejs", { error: "System error" + err, cartItems: [] });
   }
 };
 

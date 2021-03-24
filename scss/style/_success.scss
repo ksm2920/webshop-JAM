@@ -1,0 +1,38 @@
+.success-body {
+    text-align: center;
+    div {
+        margin: 150px 15px;
+        h1 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 20px;
+        }
+    }
+    @include tablet {
+        div {
+            margin: 210px 0;
+            h1 {
+                font-size: 35px;
+                margin-bottom: 25px;
+            }
+            h2 {
+                font-size: 25px;
+            }
+        }
+    }
+
+    @include desktop {
+        div {
+            margin: 220px 0;
+            h1 {
+                font-size: 40px;
+                margin-bottom: 30px;
+            }
+            h2 {
+                font-size: 30px;
+            }
+        }
+    }
+}
