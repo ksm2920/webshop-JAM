@@ -11,13 +11,11 @@ function showContent(elementId) {
 }
 
 
+
 function loadMore(pageIndex){
-    console.log("xyz");
     
-    console.log(pageIndex);
     pageIndex++;
     $("#pageIndex").attr("value",pageIndex);
-    console.log(pageIndex);
     $("#form_productList").submit();
     
 }

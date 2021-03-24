@@ -39,10 +39,11 @@
                   <div class="card-body">
                     <a class="imagebox" href="/products/<%= product.id %>"><h5 class="card-title"> <%= product.name %></h5></a>
                     <p class="card-text"> <%= product.price %> SEK</p>
-                    <span class="buyBtn">
-                      <form  method="GET" action="/addToCart/<%= product.id %>">
+                    <span>
+                      <a class="buybtn1" href="/addToCart/<%= product.id %>" role="button">Buy</a>
+                      <!--<form  method="GET" action="/addToCart/<%= product.id %>">
                         <input type="submit" value="Buy" class="buybtn">
-                    </form>
+                    </form>-->
                     </span>
                     <!-- <a href="/addToCart/<%= product.id %>" class="add-to-cart">
                     <span class="fas fa-shopping-basket"></span>
