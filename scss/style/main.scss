@@ -75,3 +75,19 @@ body {
 .contact {
   margin-top: 30px;
 }
+.buybtn1{
+  height: 40px;
+  width: 120px;
+  background-color: rgb(70, 37, 24);
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid transparent;
+  padding: .375rem 3rem;
+  &:hover{
+    background-color: rgb(70, 37, 24);
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid transparent;
+  }
+  
+}

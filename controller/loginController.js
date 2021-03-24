@@ -45,10 +45,19 @@ const loginSubmit = async (req, res) => {
       res.cookie("jwtToken", jwtToken, { maxAge: 3600000, httpOnly: true });
       //redirect to shopping cart
       var jwtObjevt = jwt.verify(jwtToken, process.env.SECRET_KEY);
+      console.log(returnUrl);
       if (jwtObjevt.user.role == "admin") {
-        return res.redirect("/adminPage");
-      } else {
-        res.redirect("/");
+        if(returnUrl == "" || returnUrl == "/login")
+          return res.redirect("/adminPage");
+        else
+          res.redirect(returnUrl);
+      } 
+      else {
+        
+        if(returnUrl == "" || returnUrl == "/login")
+          return res.redirect("/");
+        else
+          res.redirect(returnUrl);
       }
     }
 

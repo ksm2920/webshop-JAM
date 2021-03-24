@@ -2,6 +2,7 @@ const Product = require("../model/product");
 const { User } = require("../model/user");
 
 const addToShoppingCart = async (req, res) => {
+  console.log("In atsc route");
   const user = await User.findOne({ _id: req.user.user._id });
   if (user) {
     const productId = req.params.id;
