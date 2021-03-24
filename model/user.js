@@ -75,7 +75,7 @@ function validateLoginForm(user) {
 
 function validateCheckoutForm(user) {
   const schema = Joi.object({
-    name: Joi.string().min(2).max(30).required(),
+    firstname: Joi.string().min(2).max(30).required(),
     lastname: Joi.string().min(2).max(30).required(),
     address: Joi.string().min(5).max(255).required(),
     city: Joi.string().min(5).max(255).required(),
