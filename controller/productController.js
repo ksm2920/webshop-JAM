@@ -9,18 +9,19 @@ const loadProductDetails = async (req, res) => {
     var product = await Product.findOne({ _id });
     const token = req.cookies.jwtToken;
     if (token) {
-      const userWithCourseData = await User.findOne({
+      const userWithData = await User.findOne({
         _id: req.user.user._id,
       }).populate("shoppingCart.productId");
 
       res.render("product.ejs", {
         product,
         error,
-        cartItems: userWithCourseData.shoppingCart,
-        user: req.user
+        cartItems: userWithData.shoppingCart,
+        user: req.user,
+        wishlist: userWithData.wishlist
       });
     } else {
-      res.render("product.ejs", { product, error, cartItems: [] });
+      res.render("product.ejs", { product, error, cartItems: [], wishlist: [] });
     }
   } catch (err) {
     error = err;

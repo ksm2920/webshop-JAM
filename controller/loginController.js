@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const loginRender = (req, res) => {
-  res.render("login.ejs", { error: "", cartItems: [], returnUrl: req.originalUrl });
+  res.render("login.ejs", { error: "", cartItems: [], returnUrl: req.originalUrl, wishlist: [] });
 };
 
 const loginSubmit = async (req, res) => {
@@ -18,7 +18,8 @@ const loginSubmit = async (req, res) => {
     return res.render("login.ejs", {
       error: error.details[0].message,
       cartItems: [],
-      returnUrl
+      returnUrl,
+      wishlist: []
     });
   }
   
@@ -30,7 +31,8 @@ const loginSubmit = async (req, res) => {
       return res.render("register.ejs", {
         error: "You don't have an account. Please sign up",
         cartItems: [],
-        returnUrl
+        returnUrl,
+        wishlist: []
       });
     }
 
@@ -40,7 +42,8 @@ const loginSubmit = async (req, res) => {
       return res.render("login.ejs", {
         error: "Wrong password",
         cartItems: [], 
-        returnUrl
+        returnUrl,
+        wishlist: []
       });
     }
 
@@ -67,7 +70,7 @@ const loginSubmit = async (req, res) => {
     //redirect to shopping cart
     return res.send("Error, how did u get here");
   } catch (err) {
-    return res.render("login.ejs", { error: "System error" + err, cartItems: [], returnUrl });
+    return res.render("login.ejs", { error: "System error" + err, cartItems: [], returnUrl, wishlist: [] });
   }
 };
 

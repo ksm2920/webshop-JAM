@@ -4,9 +4,7 @@ const { v4 } = require("uuid");
 
 require("dotenv").config();
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-const {loadProducts} = require("../controller/indexController");
 const nodemailer = require('nodemailer');
-const nodemailerSmtpTransport = require("nodemailer-smtp-transport");
 
 const getTotal = (cartItems) => {
   let totalPrice = 0;
@@ -29,25 +27,27 @@ const transport = nodemailer.createTransport({
 
 const checkoutRender = async (req, res) => {
   console.log("Verified");
-  const userWithCourseData = await User.findOne({
+  const userWithData = await User.findOne({
     _id: req.user.user._id,
   }).populate("shoppingCart.productId");
-  //console.log(userWithCourseData.shoppingCart);
+  //console.log(userWithData.shoppingCart);
 
   res.render("checkout.ejs", {
     error: "",
     user: req.user,
-    cartItems: userWithCourseData.shoppingCart,
+    cartItems: userWithData.shoppingCart,
+    wishlist: userWithData.wishlist
   });
 };
 
 const checkoutSubmit = async (req, res) => {
   const { error } = validateCheckoutForm(req.body);
 
-  const userWithCourseData = await User.findOne({
+  const userWithData = await User.findOne({
     _id: req.user.user._id,
   }).populate("shoppingCart.productId");
-  console.log(userWithCourseData.shoppingCart);
+;
+  // console.log(userWithData.shoppingCart);
 
   const {lastname, address, city, zip, email, phone} = req.body
   const checkoutUserId = req.user.user._id;
@@ -56,8 +56,9 @@ const checkoutSubmit = async (req, res) => {
   if (error) {
     return res.render("checkout.ejs", {
       error: error.details[0].message,
-      cartItems: userWithCourseData.shoppingCart,
+      cartItems: userWithData.shoppingCart,
       user: req.user,
+      wishlist: userWithData.wishlist
     });
   } else {
 
@@ -78,7 +79,7 @@ const checkoutSubmit = async (req, res) => {
   }
 
 const payment = async (req, res) => {
-  const userWithCourseData = await User.findOne({
+  const userWithData = await User.findOne({
     _id: req.user.user._id,
   }).populate("shoppingCart.productId");
 
@@ -86,7 +87,7 @@ const payment = async (req, res) => {
     success_url: "http://localhost:8000/shoppingSuccess",
     cancel_url: "https://example.com/cancel",
     payment_method_types: ["card"],
-    line_items: userWithCourseData.shoppingCart.map((productId) => {
+    line_items: userWithData.shoppingCart.map((productId) => {
       return {
         name: productId.productId.name,
         amount: productId.productId.price * 100,
@@ -99,20 +100,20 @@ const payment = async (req, res) => {
 
   console.log(session);
   res.render("payment.ejs", {
-    cartItems: userWithCourseData.shoppingCart,
+    cartItems: userWithData.shoppingCart,
     sessionId: session.id,
   });
 };
 
 const shoppingSuccess = async (req, res) => {
   const user = await User.findOne({ _id: req.user.user._id });
-  const userWithCourseData = await User.findOne({
+  const userWithData = await User.findOne({
     _id: req.user.user._id,
   }).populate("shoppingCart.productId");
   console.log(user);
   user.shoppingCart = [];
   user.orderNo = v4();
-  user.orderItems = userWithCourseData.shoppingCart;
+  user.orderItems = userWithData.shoppingCart;
   user.save();
 
     await transport.sendMail({
@@ -123,7 +124,7 @@ const shoppingSuccess = async (req, res) => {
         
           html: `<h1> Thank you for shopping with us! </h1>
                   <h3>Your Order No is ${user.orderNo}</h3>
-                  <h3>You purchase amount is ${getTotal(userWithCourseData.shoppingCart)}</h3>`,
+                  <h3>You purchase amount is ${getTotal(userWithData.shoppingCart)}</h3>`,
       }, function(err, info){
           if (err ){
             console.log(err);
@@ -133,7 +134,7 @@ const shoppingSuccess = async (req, res) => {
           }
       });
 
-      res.render("shoppingcartSucess.ejs", {cartItems: []});
+      res.render("shoppingcartSucess.ejs", {cartItems: [], wishlist:[]});
 
 
 };

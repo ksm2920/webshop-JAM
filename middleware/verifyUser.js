@@ -6,7 +6,7 @@ const verifyUser = (req, res, next) => {
 
     if(!token) {
         console.log(req.originalUrl);
-        return res.render('login.ejs', {error:"", cartItems: [], returnUrl: req.originalUrl});
+        return res.render('login.ejs', {error:"", cartItems: [], returnUrl: req.originalUrl, wishlist:[]});
     }
 
     const validUser = jwt.verify(token, process.env.SECRET_KEY)

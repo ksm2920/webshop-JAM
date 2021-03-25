@@ -16,7 +16,7 @@ const transport = nodemailer.createTransport({
 });
 
 const resetRender = (req, res) => {
-  res.render("requestReset.ejs", { error: "", cartItems: [] });
+  res.render("requestReset.ejs", { error: "", cartItems: [], wishlist: []});
 };
 
 const resetSubmit = async (req, res) => {
@@ -27,6 +27,7 @@ const resetSubmit = async (req, res) => {
     return res.render("register.ejs", {
       error: "You don't have account. Please sign up first!",
       cartItems: [],
+      wishlist: []
     });
 
   const token = crypto.randomBytes(32).toString("hex");
@@ -42,7 +43,7 @@ const resetSubmit = async (req, res) => {
     subject: "Reset your password",
     html: `<h2>Click<a href = "http://localhost:8000/reset/${user.token}"> Here </a>to reset your password</h2>`,
   });
-  res.render("checkEmail.ejs", { cartItems: [] });
+  res.render("checkEmail.ejs", { cartItems: [], wishlist: [] });
 };
 
 const resetParams = async (req, res) => {
@@ -60,9 +61,10 @@ const resetParams = async (req, res) => {
       error: "",
       email: user.email,
       cartItems: [],
+      wishlist: []
     });
   } catch (err) {
-    res.render("requestReset.ejs", { error: "Try again", cartItems: [] });
+    res.render("requestReset.ejs", { error: "Try again", cartItems: [], wishlist: [] });
   }
 };
 

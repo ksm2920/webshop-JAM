@@ -81,7 +81,8 @@ const loadProducts = async (req, res) => {
       cartItems: userData.shoppingCart,
       sortedBy,
       sortingParams,
-      qParams
+      qParams,
+      wishlist: userData.wishlist
     });
   } else {
     res.render("index.ejs", {
@@ -93,7 +94,8 @@ const loadProducts = async (req, res) => {
       cartItems: [],
       sortedBy,
       sortingParams,
-      qParams
+      qParams,
+      wishlist: []
     });
   }
 };
