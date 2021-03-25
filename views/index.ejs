@@ -39,10 +39,8 @@
                   <a class="imagebox" href="/products/<%= product.id %>"><img src="/uploads/<%= product.pathOfImage %>" class="card-img-top myImg" alt=""></a>
                   <div class="card-body">
                     <a class="imagebox" href="/products/<%= product.id %>"><h5 class="card-title"> <%= product.name %></h5></a>
-                    <p class="card-text"> <%= product.price %> SEK</p>
-                    <a href="/addToWishlist/<%= product.id %>">
-                      <span class="fa fa-heart fa-lg "></span>
-                    </a>
+                    <p class="card-text"><%= product.price %> SEK</p>
+                    <a href="/addToWishlist/<%= product.id %>"><span class="fa fa-heart fa-lg" id="wish"></span></a>
                     <span>
                       <a class="buybtn1" href="/addToCart/<%= product.id %>" role="button">Buy</a>
                       <!--<form  method="GET" action="/addToCart/<%= product.id %>">
@@ -50,9 +48,6 @@
                         <input type="submit" value="Buy" class="buybtn">
                     </form>-->
                     </span>
-                    <!-- <a href="/addToCart/<%= product.id %>" class="add-to-cart">
-                    <span class="fas fa-shopping-basket"></span>
-                    </a> -->
                   </div>
                 </div>
                 <% }); %>

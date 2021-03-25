@@ -76,12 +76,12 @@ body {
 }
 .buybtn1{
   height: 40px;
-  width: 120px;
+  width: 150px;
   background-color: rgb(70, 37, 24);
   color: #fff;
   text-decoration: none;
-  border: 1px solid transparent;
-  padding: .375rem 3rem;
+  border-radius: 4px;
+  padding: .375rem 4rem;
   &:hover{
     background-color: rgb(70, 37, 24);
     color: #fff;
@@ -150,5 +150,16 @@ body {
         }
       }
     }
+  }
+}
+
+
+#wish {
+  top: 77%;
+  @include tablet {
+    right: 25%;
+  }
+  @include desktop {
+    top: 80%;
   }
 }
