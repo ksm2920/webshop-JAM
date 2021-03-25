@@ -13,6 +13,7 @@ const userSchema = new mongoose.Schema({
   city: String,
   zipcode: Number,
   phone: Number,
+  returnUrl: String,
   productList: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -31,6 +32,19 @@ const userSchema = new mongoose.Schema({
       },
     },
   ],
+  orderItems: [
+    {
+      productId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "product",
+      },
+      quantity: {
+        type: Number,
+        required: true,
+      },
+    },
+  ],
+  orderNo: String,
   wishlist: [
     {
       productId: {
@@ -50,19 +64,20 @@ function validateRegisterForm(user) {
     role: Joi.string().required(),
   });
   return schema.validate(user);
-}
+};
 
 function validateLoginForm(user) {
   const schema = Joi.object({
     email: Joi.string().min(5).max(200).required().email(),
     password: Joi.string().min(8).max(255).required(),
+    returnUrl:Joi.string()
   });
   return schema.validate(user);
 }
 
 function validateCheckoutForm(user) {
   const schema = Joi.object({
-    name: Joi.string().min(2).max(30).required(),
+    firstname: Joi.string().min(2).max(30).required(),
     lastname: Joi.string().min(2).max(30).required(),
     address: Joi.string().min(5).max(255).required(),
     city: Joi.string().min(5).max(255).required(),

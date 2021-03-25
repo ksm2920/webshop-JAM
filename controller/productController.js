@@ -17,9 +17,10 @@ const loadProductDetails = async (req, res) => {
         product,
         error,
         cartItems: userWithCourseData.shoppingCart,
+        user: req.user
       });
     } else {
-      res.render("product.ejs", { product, error, cartItems: null });
+      res.render("product.ejs", { product, error, cartItems: [] });
     }
   } catch (err) {
     error = err;
