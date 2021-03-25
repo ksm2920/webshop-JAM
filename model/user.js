@@ -61,7 +61,7 @@ function validateRegisterForm(user) {
     lastname: Joi.string().min(2).max(30).required(),
     email: Joi.string().min(5).max(200).required().email(),
     password: Joi.string().min(8).max(255).required(),
-    role: Joi.string().required()
+    role: Joi.string().required(),
   });
   return schema.validate(user);
 };
@@ -88,10 +88,10 @@ function validateCheckoutForm(user) {
   return schema.validate(user);
 }
 
-userSchema.methods.addProductList = function(productId) {
+userSchema.methods.addProductList = function (productId) {
   this.productList.push(productId);
   this.save();
-}
+};
 
 userSchema.methods.addToCart = function (productId) {
   const foundItem = this.shoppingCart.find(
@@ -135,6 +135,27 @@ userSchema.methods.removeFromCart = function (productId) {
 userSchema.methods.removeProduct = function (productId) {
   this.productList = this.productList.filter(
     (product) => product._id != productId
+  );
+  return this.save();
+};
+
+userSchema.methods.saveToWishlist = function (productId) {
+  const foundItem = this.wishlist.find(
+    (product) => product.productId == productId
+  );
+
+  if (!foundItem) {
+    this.wishlist.push({
+      productId: productId,
+      quantity: 1,
+    });
+  }
+  return this.save();
+};
+
+userSchema.methods.removeFromWishlist = function (productId) {
+  this.wishlist = this.wishlist.filter(
+    (product) => product.productId != productId
   );
   return this.save();
 };
