@@ -1,0 +1,48 @@
+
+.empty-txt {
+    margin-top: 50px;
+}
+
+
+.row {
+    display: flex;
+    justify-content: center;
+    
+    .wishlist-list {
+        margin: 50px 0px;
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            
+            .product-detail-wishlist {
+                color: rgb(70, 37, 24);
+                a:first-of-type {
+                    color: rgb(70, 37, 24);
+                    float: right;
+                }
+            }
+            a {
+                margin-top: auto;
+                .buybtn-wishlist {
+                    width: 100%;
+                    padding: 5px;
+                    background-color: rgb(70, 37, 24);
+                    border: none;
+                    border-radius: 4px;
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+#wish {
+    top: 77%;
+    @include tablet {
+        right: 25%;
+    }
+    @include desktop {
+        top: 80%;
+    }
+}
