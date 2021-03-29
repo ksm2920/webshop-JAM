@@ -31,7 +31,7 @@ const wishlistRender = async (req, res) => {
   res.render("wishlist.ejs", {
     wishlist: userWishlist.wishlist,
     err: " ",
-    cartItems: null,
+    cartItems: userWishlist.shoppingCart,
     user: req.user,
   });
 };
