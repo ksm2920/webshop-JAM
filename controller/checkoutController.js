@@ -85,7 +85,7 @@ const payment = async (req, res) => {
 
   const session = await stripe.checkout.sessions.create({
     success_url: "http://localhost:8000/shoppingSuccess",
-    cancel_url: "https://example.com/cancel",
+    cancel_url: "http://localhost:8000/",
     payment_method_types: ["card"],
     line_items: userWithData.shoppingCart.map((productId) => {
       return {
