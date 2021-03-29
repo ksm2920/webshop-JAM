@@ -28,10 +28,14 @@ const wishlistRender = async (req, res) => {
     _id: req.user.user._id,
   }).populate("wishlist.productId");
 
+  const userWithData = await User.findOne({
+    _id: req.user.user._id,
+  }).populate("shoppingCart.productId");
+
   res.render("wishlist.ejs", {
     wishlist: userWishlist.wishlist,
     err: " ",
-    cartItems: userWishlist.shoppingCart,
+    cartItems: userWithData.shoppingCart,
     user: req.user,
   });
 };
