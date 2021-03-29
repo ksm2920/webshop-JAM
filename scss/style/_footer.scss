@@ -1,0 +1,48 @@
+#footercontent {
+  height: 100px;
+  background-color: rgb(248, 230, 206);
+  color: rgb(70, 37, 24);
+  text-align: center;
+  margin-top: 30px;
+  height: 100%;
+  h1 {
+    font-family: "Special Elite", cursive;
+    font-weight: bold;
+    font-size: 40px;
+    margin-top: 10%;
+    
+  }
+  i {
+      color: rgb(70, 37, 24);
+  }
+  p {
+      font-size: 12px;
+  }
+  li {
+      font-size: 15px;
+  }
+}
+.contact {
+  margin-top: 30px;
+}
+
+#copyright {
+   font-size: 10px;
+}
+
+.signup-btn {
+    height: 40px;
+    width: 150px;
+    background-color: rgb(70, 37, 24);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    padding: .375rem 4rem;
+    &:hover{
+      background-color: rgb(70, 37, 24);
+      color: #fff;
+      text-decoration: none;
+      border: 1px solid transparent;
+    }
+  }
+

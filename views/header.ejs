@@ -1,0 +1,82 @@
+<header>
+  <nav class="navbar navbar-expand-lg" id="menu">
+    <div class="row">
+      <div class="col-2 navIcon-section">
+        <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarTogglerDemo01"
+        aria-controls="navbarTogglerDemo01"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon navIcon">
+          <i class="fas fa-bars"></i>
+        </span>
+      </button>
+      </div>
+      <div class="col-7" id="logo-section">
+      <a class="navbar-brand menuColor" href="/" id="logo">JAM'S</a>
+      </div>
+      <div class="col-1" id="wish-section">
+      <% if(wishlist && wishlist.length > 0 ) { %>
+      <a href="/wishlist"><i class="fas fa-heart" id="wish-list"></i></a>
+      <% } else { %>
+      <a href="/wishlist"><i class="far fa-heart" id="wish-list"></i></a> 
+      <% } %>
+      </div>
+      <div class="col-1" id="cart-section">
+      <form class="form-inline my-2 my-lg-0">
+        <button
+        type="button"
+        class="btn my-2 my-md-2 myCartBtn"
+        data-toggle="modal"
+        data-target="#checkoutModal"
+        onclick="$('#checkoutModal').modal({'backdrop': 'static'})"
+        >
+          <% let quantity = 0 %>
+          <% if(cartItems !== null && cartItems !== undefined) { %>
+            <% cartItems.forEach(item => { %>
+            <% quantity += Number.parseInt(item.quantity) %>
+          <% })} %>
+          <i class="fas fa-shopping-bag myCart"></i>
+          <% if(cartItems && cartItems.length > 0) { %>
+          <span class="badge badge-danger count" id="cartBadge"><%= cartItems? quantity : ''  %> </span>
+          <% } %>
+        </button>
+      </form>
+      </div>
+  </div>
+  </div>
+  <div class="collapse navbar-collapse navigation" id="navbarTogglerDemo01">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0" id="menu-list">
+      <li class="nav-item active">
+        <a class="nav-link menuColor" href="/"
+        >Home <span class="sr-only">(current)</span></a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link menuColor" href="/checkout">Checkout</a>
+      </li>
+      <% if(!locals.user) { %>
+      <li class="nav-item">
+        <a class="nav-link menuColor" href="/login">Login</a>
+      </li>
+      <% } %>
+      <% if(locals.user) { %>
+        <li class="nav-item">
+          <a class="nav-link menuColor" href="/logout">Logout</a>
+        </li>
+      <% } %>
+      <% if(locals.user && locals.user.user.role == "admin") { %>
+        <li class="nav-item">
+          <a class="nav-link menuColor" href="/adminPage">Admin</a>
+        </li>
+      <% } %>
+    </ul>
+  </div>
+</nav>
+<%- include ("shoppingCart.ejs") %>
+</header>
+  

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('head.ejs') %> <%- include('header.ejs') %>
+  <body>
+    <div class="container my-5">
+      <h4>1. Your shoppingcart</h4>
+      <hr />
+      <% if(cartItems) {%> <% cartItems.forEach(item => {%>
+      <div class="row cartCard checkout-card">
+        <div class="col-4 col-md-4 col-lg-4 cart-img checkout-img">
+          <img
+            src="/uploads/<%= item.productId.pathOfImage %> "
+            alt="<%= item.productId.name %>"
+            width="60px"
+            height="42px"
+            class="img-thumbnail"
+            id="thumbnail"
+          />
+        </div>
+        <div class="col-4 col-md-4 col-lg-4 cart-info">
+          <div class="pricing">
+            <span><strong><%= item.productId.name%></strong></span>
+            <span><%= item.productId.price %> kr</span>
+          </div>
+          <div>
+            <span>Antal: </span>
+          </div>
+        </div>
+        <div class="col-4 col-md-4 col-lg-4 cart-quantity pr-lg-0">
+          <a class="btn" href="/removeFromCart/<%= item.productId._id %>">
+            <i class="fas fa-trash-alt fa-lg"></i>
+          </a>
+          <div class="change-quantity">
+            <a href="/decreaseQuantity/<%= item.productId._id %>"
+              ><button type="button">-</button></a
+            >
+            <input
+              class="col-4 col-lg-8 p-0"
+              type="number"
+              style="width: 100%"
+              value="<%= item.quantity %>"
+            />
+            <a href="/addToCart/<%= item.productId._id %>"
+              ><button type="button">+</button></a
+            >
+          </div>
+        </div>
+      </div>
+      <hr />
+      <%})%> <% let totalPrice = 0 %> <% for (let i = 0; i < cartItems.length;
+      i++) { %> <% totalPrice += cartItems[i].productId.price *
+      cartItems[i].quantity; %> <% } %>
+      <h5 class="col-12">Total: <%= totalPrice %> SEK</h5>
+      <%}%>
+      <hr />
+      <h4>2. Checkout</h4>
+      <form action="/checkout" method="post" class="col-12 col-lg-12">
+        <div class="form-row">
+          <div class="form-group col-6 col-md-6">
+            <label for="inputFirstname">Firstname: </label>
+            <input
+              type="text"
+              class="form-control"
+              name="firstname"
+              id="inputFirstname"
+              value="<%= user.user.firstname %>"
+              placeholder="Jane"
+            />
+          </div>
+          <div class="form-group col-6 col-md-6">
+            <label for="inputLastname">Lastname: </label>
+            <input
+              type="text"
+              class="form-control"
+              name="lastname"
+              id="inputLastname"
+              placeholder="Doe"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputAddress">Address: </label>
+          <input
+            type="text"
+            class="form-control"
+            name="address"
+            id="inputAddress"
+            placeholder="1234 Main St"
+          />
+        </div>
+        <div class="form-row">
+          <div class="form-group col-6 col-md-6">
+            <label for="inputCity">City</label>
+            <input
+              type="text"
+              class="form-control"
+              name="city"
+              id="inputCity"
+              placeholder="Stockholm"
+            />
+          </div>
+          <div class="form-group col-6 col-md-6">
+            <label for="inputZip">Zip</label>
+            <input
+              type="number"
+              class="form-control"
+              name="zip"
+              id="inputZip"
+              placeholder="12345"
+            />
+          </div>
+        </div>
+        <hr />
+        <div class="form-group">
+          <h5>Contactinformation:</h5>
+          <label for="inputEmail">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            id="inputEmail"
+            value="<%= user.user.email %>"
+            placeholder="example@hi.com"
+          />
+        </div>
+        <div class="form-group">
+          <label for="inputPhone">Phonenumber</label>
+          <input
+            type="tel"
+            class="form-control"
+            name="phone"
+            id="inputPhone"
+            placeholder="0760000000"
+          />
+        </div>
+        <button type="submit" class="btn btn-dark col-12">Payment</button>
+        <% if(error) {%>
+        <p class="error"><%= error %></p>
+        <%}%>
+      </form>
+    </div>
+    <%- include('footer.ejs') %>
+  </body>
+</html>
