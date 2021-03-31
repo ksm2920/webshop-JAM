@@ -134,7 +134,7 @@ const shoppingSuccess = async (req, res) => {
           }
       });
 
-      res.render("shoppingcartSucess.ejs", {cartItems: [], wishlist:[]});
+      res.render("shoppingcartSucess.ejs", {cartItems: [], wishlist:[], user:req.user});
 
 
 };
