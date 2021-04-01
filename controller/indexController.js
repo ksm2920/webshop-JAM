@@ -32,7 +32,7 @@ const loadProducts = async (req, res) => {
   let searchText = "";
   let qParams = [];
   let pageIndex = 1;
-  let pageSize = Number.parseInt(process.env.INDEX_PAGE_SIZE);
+  let pageSize = 4;
   try {
     
     
